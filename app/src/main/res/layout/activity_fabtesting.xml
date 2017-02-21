@@ -21,14 +21,69 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_fabtesting" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_fabtesting" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_marginBottom="184dp"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:clickable="false"
+        android:visibility="invisible"
+        app:backgroundTint="?attr/colorPrimaryDark"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_profile"
+
+
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="128dp"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:clickable="false"
+        android:visibility="invisible"
+        app:backgroundTint="?attr/colorPrimaryDark"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_home"
+
+
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="72dp"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:clickable="false"
+        android:visibility="invisible"
+        app:backgroundTint="?attr/colorPrimaryDark"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_add"
+
+
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_expand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="@dimen/fab_margin_right"
+        android:clickable="true"
+        app:backgroundTint="?attr/colorPrimary"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_expand" />
+
 
 </android.support.design.widget.CoordinatorLayout>
