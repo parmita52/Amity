@@ -7,6 +7,23 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.android.amity.MapActivity">
 
+    <fragment
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:name="com.example.android.amity.HelloMapFragment"
+        android:id="@+id/fragment"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <!--<fragment
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:name="com.example.android.amity.HelloGlobeFragment"
+        android:id="@+id/fragment"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />-->
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
