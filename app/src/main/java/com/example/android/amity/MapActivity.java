@@ -15,27 +15,21 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        Runnable runnable = new Runnable() {
-            public void run() {
-                //System.out.println("just got here");
-                Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-                setSupportActionBar(toolbar);
+        //System.out.println("just got here");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-                FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-                fab.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                    }
-                });
-
-                Fragment map = getSupportFragmentManager().findFragmentById(R.id.fragment);
-                map.onCreate(savedInstanceState);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
-        };
-        Thread mythread = new Thread(runnable);
-        mythread.start();
+        });
+
+//        Fragment map = getSupportFragmentManager().findFragmentById(R.id.fragment);
+//        map.onCreate(savedInstanceState);
 
 
 
