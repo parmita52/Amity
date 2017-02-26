@@ -32,22 +32,29 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        //MAP**************************
-        final TextView map = (TextView) findViewById(R.id.map);
+        Runnable runnable = new Runnable() {
+            public void run() {
+                final TextView map = (TextView) findViewById(R.id.map);
 
-        // Set a click listener on that View
-        map.setOnClickListener(new View.OnClickListener() {
-            // The code in this method will be executed when the numbers category is clicked on.
-            @Override
-            public void onClick(View view) {
-                // Create a new intent to open the {@link NumbersActivity}
-                Intent mapIntent = new Intent(MainActivity.this, MapActivity.class);
+                // Set a click listener on that View
+                map.setOnClickListener(new View.OnClickListener() {
+                    // The code in this method will be executed when the numbers category is clicked on.
+                    @Override
+                    public void onClick(View view) {
+                        // Create a new intent to open the {@link NumbersActivity}
+                        Intent mapIntent = new Intent(MainActivity.this, MapActivity.class);
 
-                // Start the new activity
-                startActivity(mapIntent);
+                        // Start the new activity
+                        startActivity(mapIntent);
+                    }
+
+                });
             }
+        };
+        Thread mythread = new Thread(runnable);
+        mythread.start();
+        //MAP**************************
 
-        });
 
 
         //TOP POSTS**************************

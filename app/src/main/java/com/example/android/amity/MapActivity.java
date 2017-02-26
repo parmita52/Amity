@@ -1,8 +1,10 @@
 package com.example.android.amity;
 
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -10,9 +12,10 @@ import android.view.View;
 public class MapActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        //System.out.println("just got here");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -24,6 +27,12 @@ public class MapActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-    }
+
+//        Fragment map = getSupportFragmentManager().findFragmentById(R.id.fragment);
+//        map.onCreate(savedInstanceState);
+
+
+
+}
 
 }
