@@ -24,6 +24,7 @@ public class FABTestingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //          Start of FAB**************************************
         /*
         initializing fab buttons by id
          */
@@ -85,7 +86,7 @@ public class FABTestingActivity extends AppCompatActivity {
         fab_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent postIntent = new Intent(FABTestingActivity.this, PostActivity.class);
+                Intent postIntent = new Intent(FABTestingActivity.this, CreatePostActivity.class);
                 startActivity(postIntent);
             }
         });

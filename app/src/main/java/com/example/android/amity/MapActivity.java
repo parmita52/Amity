@@ -98,7 +98,7 @@ public class MapActivity extends AppCompatActivity {
         fab_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent postIntent = new Intent(MapActivity.this, PostActivity.class);
+                Intent postIntent = new Intent(MapActivity.this, CreatePostActivity.class);
                 startActivity(postIntent);
             }
         });
