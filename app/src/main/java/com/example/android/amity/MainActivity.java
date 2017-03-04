@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+
+        //MAP**************************
         Runnable runnable = new Runnable() {
             public void run() {
                 final TextView map = (TextView) findViewById(R.id.map);
@@ -53,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         };
         Thread mythread = new Thread(runnable);
         mythread.start();
-        //MAP**************************
 
 
 
