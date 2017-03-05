@@ -34,10 +34,10 @@ public class PostAdapter extends ArrayAdapter<Post> {
         title.setText(currentPost.getTitle());
 
         TextView author = (TextView) listItemView.findViewById(R.id.author);
-        title.setText(currentPost.getAuthor());
+        author.setText(currentPost.getAuthor());
 
         TextView content = (TextView) listItemView.findViewById(R.id.content);
-        title.setText(currentPost.getContent());
+       content.setText(currentPost.getContent());
 
         return listItemView;
     }

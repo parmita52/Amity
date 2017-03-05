@@ -28,8 +28,8 @@ public class ResultsActivity extends AppCompatActivity {
 
 
         ArrayList<Post> posts = new ArrayList<Post>();
-        posts.add(new Post("titelt ittele", "author atuhor", "contenc otneon"));
-        posts.add(new Post("marilyn's title", "marilyn", "marilyn content"));
+        posts.add(new Post("Title here", "Author here", "Content here"));
+        posts.add(new Post("SuperCode is so cool", "Marilyn Zhang", "Our team is so cool. We've coded so much. Parmita Jess Marilyn Fiona Cassandra balh dfkjnkdsf blah blahc afrkjdhfkeruefhjhdjhr"));
 
         PostAdapter postAdapter = new PostAdapter (this, posts);
 

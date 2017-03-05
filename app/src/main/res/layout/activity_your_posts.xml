@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_your_posts" />
+    <include layout="@layout/content_template_list_of_posts" />
 
     <include layout="@layout/fab" />
 </android.support.design.widget.CoordinatorLayout>

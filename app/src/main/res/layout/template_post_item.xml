@@ -4,7 +4,8 @@
     android:minHeight="144dp"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:id="@+id/post_item">
+    android:id="@+id/post_item"
+    android:layout_margin="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,25 +13,15 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:padding="12dp"
-            android:gravity="center"
+            style="@style/postTitle"
             android:id="@+id/title"/>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="12dp"
-            android:gravity="center"
+            style="@style/postAuthor"
             android:id="@+id/author"/>
     </LinearLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
+        style="@style/postContent"
         android:id="@+id/content"/>
 </LinearLayout>

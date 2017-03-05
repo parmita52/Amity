@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_bookmarks" />
+    <include layout="@layout/content_template_list_of_posts" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
