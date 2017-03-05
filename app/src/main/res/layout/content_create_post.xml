@@ -4,14 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.android.amity.CreatePostActivity"
-    tools:showIn="@layout/activity_create_post">
+    tools:showIn="@layout/activity_create_post"
+    android:id="@+id/content_create_post"
+    >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2">
 
+        <EditText
+            android:id="@+id/edit_create_post_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/post_title"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:background="@android:color/white"
+            android:hint="Title"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/post_title_padding"
+            android:textSize="@dimen/post_title_text" />
+
+        <EditText
+            android:id="@+id/edit_create_post_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:layout_weight="1"
+            android:gravity="start|top"
+            android:background="@android:color/white"
+            android:hint="Write Your Post Here"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/post_padding"
+            android:maxLines="20"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/post_padding"
+            android:weightSum="1"
+            >
+
+            <EditText
+                android:id="@+id/edit_create_post_tags"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="start|top"
+                android:maxLines="20"
+                android:background="@android:color/white"
+                android:hint="Add Tags"
+                android:inputType="textMultiLine"
+                android:paddingBottom="@dimen/post_padding" />
+
+
+            <Button
+                android:id="@+id/create_post_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:background="@color/colorPrimary"
+                android:text="POST" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
