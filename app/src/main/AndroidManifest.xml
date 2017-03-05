@@ -44,27 +44,27 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".PostActivity"
-            android:label="@string/title_activity_post"
+            android:label="Post"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TopPostsActivity"
-            android:label="@string/title_activity_top_posts"
+            android:label="Top Posts"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BookmarksActivity"
-            android:label="@string/title_activity_bookmarks"
+            android:label="Bookmarks"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ResultsActivity"
-            android:label="@string/title_activity_results"
+            android:label="Results"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".NavigationDrawerActivity"
-            android:label="@string/title_activity_navigation_drawer"
+            android:label="Settings"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CreatePostActivity"
-            android:label="@string/title_activity_create_post"
+            android:label="Create Post"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FABTestingActivity"
@@ -72,11 +72,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".YourPostsActivity"
-            android:label="@string/title_activity_your_posts"
+            android:label="Your Posts"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MapActivity"
-            android:label="@string/title_activity_map"
+            android:label="Welcome"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ResultsActivity extends AppCompatActivity {
     FloatingActionButton fab_expand, fab_add, fab_home, fab_profile;
@@ -24,6 +27,15 @@ public class ResultsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        ArrayList<Post> posts = new ArrayList<Post>();
+        posts.add(new Post("titelt ittele", "author atuhor", "contenc otneon"));
+        posts.add(new Post("marilyn's title", "marilyn", "marilyn content"));
+
+        PostAdapter postAdapter = new PostAdapter (this, posts);
+
+        ListView listView = (ListView) findViewById(R.id.template_list);
+
+        listView.setAdapter(postAdapter);
 
 
 
