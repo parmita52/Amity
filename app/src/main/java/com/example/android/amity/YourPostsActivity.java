@@ -18,19 +18,22 @@ public class YourPostsActivity extends AppCompatActivity {
     Animation FabOpen, FabClose, FabRClockwise, FabRCounterclockwise;
     boolean isOpen = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_your_posts);
+        setContentView(R.layout.activity_results);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-
-
         ArrayList<Post> posts = new ArrayList<Post>();
         posts.add(new Post("Title here", "Author here", "Content here"));
+        posts.add(new Post("YOUR POSTS", "First Last", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur, metus ut ultrices sodales, massa felis fermentum ipsum, at volutpat felis mauris sit amet nulla. Ut sed felis tincidunt, blandit tortor eu, fringilla sapien. Ut vitae lorem enim. Donec et tellus non ipsum imperdiet malesuada eget nec lectus. Proin imperdiet varius libero nec rhoncus. In quis laoreet est. Praesent tristique, nulla at dignissim sagittis, urna velit sodales orci, in semper lectus neque eu justo. Nunc volutpat et dui sit amet euismod. Sed ultrices mattis elit ac rutrum. Vivamus commodo rutrum justo sed sagittis. Etiam faucibus maximus velit, vel elementum dui luctus at. Quisque in facilisis mi. Duis et turpis facilisis, aliquet nisi a, pulvinar neque."));
         posts.add(new Post("SuperCode is so cool", "Marilyn Zhang", "Our team is so cool. We've coded so much. Parmita Jess Marilyn Fiona Cassandra balh dfkjnkdsf blah blahc afrkjdhfkeruefhjhdjhr"));
+        posts.add(new Post("YOUR POSTS", "First Last", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur, metus ut ultrices sodales, massa felis fermentum ipsum, at volutpat felis mauris sit amet nulla. Ut sed felis tincidunt, blandit tortor eu, fringilla sapien. Ut vitae lorem enim. Donec et tellus non ipsum imperdiet malesuada eget nec lectus. Proin imperdiet varius libero nec rhoncus. In quis laoreet est. Praesent tristique, nulla at dignissim sagittis, urna velit sodales orci, in semper lectus neque eu justo. Nunc volutpat et dui sit amet euismod. Sed ultrices mattis elit ac rutrum. Vivamus commodo rutrum justo sed sagittis. Etiam faucibus maximus velit, vel elementum dui luctus at. Quisque in facilisis mi. Duis et turpis facilisis, aliquet nisi a, pulvinar neque."));
+        posts.add(new Post("YOUR POSTS", "First Last", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur, metus ut ultrices sodales, massa felis fermentum ipsum, at volutpat felis mauris sit amet nulla. Ut sed felis tincidunt, blandit tortor eu, fringilla sapien. Ut vitae lorem enim. Donec et tellus non ipsum imperdiet malesuada eget nec lectus. Proin imperdiet varius libero nec rhoncus. In quis laoreet est. Praesent tristique, nulla at dignissim sagittis, urna velit sodales orci, in semper lectus neque eu justo. Nunc volutpat et dui sit amet euismod. Sed ultrices mattis elit ac rutrum. Vivamus commodo rutrum justo sed sagittis. Etiam faucibus maximus velit, vel elementum dui luctus at. Quisque in facilisis mi. Duis et turpis facilisis, aliquet nisi a, pulvinar neque."));
+        posts.add(new Post("YOUR POSTS", "First Last", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consectetur, metus ut ultrices sodales, massa felis fermentum ipsum, at volutpat felis mauris sit amet nulla. Ut sed felis tincidunt, blandit tortor eu, fringilla sapien. Ut vitae lorem enim. Donec et tellus non ipsum imperdiet malesuada eget nec lectus. Proin imperdiet varius libero nec rhoncus. In quis laoreet est. Praesent tristique, nulla at dignissim sagittis, urna velit sodales orci, in semper lectus neque eu justo. Nunc volutpat et dui sit amet euismod. Sed ultrices mattis elit ac rutrum. Vivamus commodo rutrum justo sed sagittis. Etiam faucibus maximus velit, vel elementum dui luctus at. Quisque in facilisis mi. Duis et turpis facilisis, aliquet nisi a, pulvinar neque."));
 
         PostAdapter postAdapter = new PostAdapter (this, posts);
 
@@ -39,8 +42,9 @@ public class YourPostsActivity extends AppCompatActivity {
         listView.setAdapter(postAdapter);
 
 
+
         //          Start of FAB**************************************
-        /*
+         /*
         initializing fab buttons by id
          */
         fab_expand = (FloatingActionButton) findViewById(R.id.fab_expand);
@@ -129,7 +133,6 @@ public class YourPostsActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
     }
 
 }
