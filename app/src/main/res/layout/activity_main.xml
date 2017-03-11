@@ -75,10 +75,10 @@
         style="@style/mainActivityStyle"/>
 
     <TextView
-        android:id="@+id/navigation_drawer"
+        android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Navigation Drawer"
+        android:text="Profile"
         style="@style/mainActivityStyle"/>
 
 </LinearLayout>

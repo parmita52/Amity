@@ -178,19 +178,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //NAVIGATION DRAWER**************************
-        TextView navigationDrawer = (TextView) findViewById(R.id.navigation_drawer);
+        //Profile**************************
+        TextView profile = (TextView) findViewById(R.id.profile);
 
         // Set a click listener on that View
-        navigationDrawer.setOnClickListener(new View.OnClickListener() {
+        profile.setOnClickListener(new View.OnClickListener() {
             // The code in this method will be executed when the numbers category is clicked on.
             @Override
             public void onClick(View view) {
                 // Create a new intent to open the {@link NumbersActivity}
-                Intent navigationDrawerIntent = new Intent(MainActivity.this, NavigationDrawerActivity.class);
+                Intent profileIntent = new Intent(MainActivity.this, ProfileActivity.class);
 
                 // Start the new activity
-                startActivity(navigationDrawerIntent);
+                startActivity(profileIntent);
             }
 
         });

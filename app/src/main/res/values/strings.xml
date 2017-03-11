@@ -15,7 +15,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_post">PostActivity</string>
+    <string name="title_activity_post">Post</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -106,17 +106,14 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_top_posts">TopPostsActivity</string>
-    <string name="title_activity_bookmarks">BookmarksActivity</string>
-    <string name="title_activity_results">ResultsActivity</string>
-    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="title_activity_create_post">CreatePostActivity</string>
+    <string name="title_activity_top_posts">Top Posts</string>
+    <string name="title_activity_bookmarks">My Bookmarks</string>
+    <string name="title_activity_results">Results</string>
+    <string name="title_activity_create_post">Create Post</string>
     <string name="title_activity_fabtesting">FABTestingActivity</string>
-    <string name="title_activity_your_posts">YourPostsActivity</string>
-    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_your_posts">Your Posts</string>
+    <string name="title_activity_map">Welcome</string>
 
     <string name="fun_stats">Cool stats and facts here</string>
+    <string name="title_activity_profile">My Profile</string>
 </resources>

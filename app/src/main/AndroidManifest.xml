@@ -44,27 +44,24 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".PostActivity"
-            android:label="Post"
+            android:label="@string/title_activity_post"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TopPostsActivity"
-            android:label="Top Posts"
+            android:label="@string/title_activity_top_posts"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BookmarksActivity"
-            android:label="Bookmarks"
+            android:label="@string/title_activity_bookmarks"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ResultsActivity"
-            android:label="Results"
+            android:label="@string/title_activity_results"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".NavigationDrawerActivity"
-            android:label="Settings"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".CreatePostActivity"
-            android:label="Create Post"
+            android:label="@string/title_activity_create_post"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FABTestingActivity"
@@ -72,11 +69,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".YourPostsActivity"
-            android:label="Your Posts"
+            android:label="@string/title_activity_your_posts"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MapActivity"
-            android:label="Welcome"
+            android:label="@string/title_activity_map"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

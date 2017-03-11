@@ -45,7 +45,7 @@
     </style>
 
     <style name="mainActivityStyle">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:padding">12dp</item>
     </style>
 
