@@ -105,13 +105,13 @@ public class FABTestingActivity extends AppCompatActivity {
 
         /*
             on click listener for profile fab
-
+            goes to ProfileActivity
          */
         fab_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "not sure where which activity it goes to yet", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent profileIntent = new Intent(FABTestingActivity.this, ProfileActivity.class);
+                startActivity(profileIntent);
             }
         });
     }

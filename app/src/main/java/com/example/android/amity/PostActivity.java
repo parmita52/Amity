@@ -106,15 +106,15 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
-        /*
+         /*
             on click listener for profile fab
-
+            goes to Profile Activity
          */
         fab_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "not sure where which activity it goes to yet", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent profileIntent = new Intent(PostActivity.this, ProfileActivity.class);
+                startActivity(profileIntent);
             }
         });
     }
