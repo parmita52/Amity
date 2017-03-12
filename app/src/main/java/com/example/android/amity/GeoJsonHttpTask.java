@@ -53,7 +53,7 @@ public class GeoJsonHttpTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String json) {
         VectorInfo vectorInfo = new VectorInfo();
-        vectorInfo.setColor(Color.RED);
+        vectorInfo.setColor(Color.DKGRAY);
         vectorInfo.setLineWidth(4.f);
         VectorObject object = new VectorObject();
         object.selectable = true;

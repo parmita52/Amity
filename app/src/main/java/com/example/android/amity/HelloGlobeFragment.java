@@ -3,6 +3,7 @@ package com.example.android.amity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,9 @@ import com.mousebird.maply.SphericalMercatorCoordSystem;
 import com.mousebird.maply.VectorObject;
 
 import java.io.File;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import static android.util.Log.d;
 
 
 public class HelloGlobeFragment extends GlobeMapFragment {
@@ -44,10 +48,10 @@ public class HelloGlobeFragment extends GlobeMapFragment {
     @Override
     protected void controlHasStarted() {
         // setup base layer tiles
-        String cacheDirName = "stamen_watercolor";
+        String cacheDirName = "stamen_terrain-background";
         File cacheDir = new File(getActivity().getCacheDir(), cacheDirName);
         cacheDir.mkdir();
-        RemoteTileSource remoteTileSource = new RemoteTileSource(new RemoteTileInfo("http://tile.stamen.com/watercolor/", "png", 0, 18));
+        RemoteTileSource remoteTileSource = new RemoteTileSource(new RemoteTileInfo("http://tile.stamen.com/terrain-background/", "png", 0, 18));
         remoteTileSource.setCacheDir(cacheDir);
         SphericalMercatorCoordSystem coordSystem = new SphericalMercatorCoordSystem();
 
@@ -64,9 +68,9 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         globeControl.addLayer(baseLayer);
         globeControl.animatePositionGeo(-3.6704803, 40.5023056, 5, 1.0);
         globeControl.setKeepNorthUp(true);
-        globeControl.setZoomLimits(1,1);
+        globeControl.setZoomLimits(0.1,1);
 
-        final String url = "https://s3.amazonaws.com/whirlyglobedocs/tutorialsupport/RUS.geojson";
+        final String url = "https://raw.githubusercontent.com/jdomingu/ThreeGeoJSON/master/test_geojson/countries_states.geojson";
         GeoJsonHttpTask task = new GeoJsonHttpTask(globeControl);
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
         // Set controller to be gesture delegate.
@@ -77,14 +81,20 @@ public class HelloGlobeFragment extends GlobeMapFragment {
 
     @Override
     public void userDidSelect(GlobeController globeControl, SelectedObject[] selObjs, Point2d loc, Point2d screenLoc) {
+        loc.setValue(130,45);
+        d("userDidSelect", loc.toString()); //testing
+        d("userDidSelect", screenLoc.toString()); //testing
+        d("userDidSelect", selObjs.toString()); //testing
         String msg = "Selected feature count: " + selObjs.length;
         for (SelectedObject obj : selObjs) {
             // GeoJSON
             if (obj.selObj instanceof VectorObject) {
                 VectorObject vectorObject = (VectorObject) obj.selObj;
+                d("userDidSelect", vectorObject.toString()); //testing
                 AttrDictionary attributes = vectorObject.getAttributes();
-                String adminName = attributes.getString("ADMIN");
-                msg += "\nVector Object: " + adminName;
+                d("userDidSelect", attributes.toString()); //testing
+                String adminName = attributes.getString("admin");
+                msg += "\nVector Object: " + adminName + loc.getX() + ", " + loc.getY();
             }
         }
 
