@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1004621621470",
+    "project_id": "amity-9abbf"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004621621470:android:c05027e6b560fe53",
+        "android_client_info": {
+          "package_name": "com.example.android.amity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004621621470-2mfakclj6vhnmdmla4vitcb98smljuk9.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1004621621470-4nj9a8qh1ngnpd0v1mpgq92on1bknejm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.amity",
+            "certificate_hash": "43a0fdbac3efe26a8bf9d017733be5f2d9e32ade"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhtP1ePVT1T-7RAhE4icib0CV_Nm61c8c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
