@@ -29,7 +29,7 @@
         android:clickable="false"
         android:visibility="invisible"
         app:backgroundTint="?attr/colorPrimary"
-        app:srcCompat="@drawable/ic_home"
+        app:srcCompat="@drawable/ic_globe"
         />
 
     <android.support.design.widget.FloatingActionButton
