@@ -10,16 +10,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import static com.example.android.amity.R.id.fab_add;
 import static com.example.android.amity.R.id.fab_expand;
 import static com.example.android.amity.R.id.fab_home;
 import static com.example.android.amity.R.id.fab_profile;
+import static com.example.android.amity.R.id.logout;
 
 public class ProfileActivity extends AppCompatActivity {
     FloatingActionButton fab_expand, fab_add, fab_home, fab_profile;
     Animation FabOpen, FabClose, FabRClockwise, FabRCounterclockwise;
     boolean isOpen = false;
+
+    LinearLayout bookmarks, yourPosts, logOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +34,31 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        bookmarks = (LinearLayout) findViewById(R.id.bookmarks);
+        yourPosts = (LinearLayout) findViewById(R.id.posts);
+        logOut = (LinearLayout) findViewById(R.id.logout);
 
-
-
+        bookmarks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent bookmarksIntent = new Intent(ProfileActivity.this, BookmarksActivity.class);
+                startActivity(bookmarksIntent);
+            }
+        });
+        yourPosts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent yourPostsIntent = new Intent(ProfileActivity.this, YourPostsActivity.class);
+                startActivity(yourPostsIntent);
+            }
+        });
+      logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent logOutIntent = new Intent(ProfileActivity.this, LoginActivity.class);
+                startActivity(logOutIntent);
+            }
+        });
 
         //          Start of FAB**************************************
         /*
@@ -57,7 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
         fab_expand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isOpen){
+                if (isOpen) {
                     //close animation for 3 buttons
                     fab_add.startAnimation(FabClose);
                     fab_home.startAnimation(FabClose);
@@ -70,8 +97,7 @@ public class ProfileActivity extends AppCompatActivity {
                     fab_profile.setClickable(false);
                     isOpen = false;
 
-                }
-                else{
+                } else {
                     //open animation for 3 buttons
                     fab_add.startAnimation(FabOpen);
                     fab_home.startAnimation(FabOpen);
