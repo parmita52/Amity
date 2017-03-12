@@ -16,5 +16,6 @@
     <dimen name="post_title_padding">12dp</dimen>
     <dimen name="small_margin">8dp</dimen>
     <dimen name="post_padding">16dp</dimen>
+    <dimen name="mini">4dp</dimen>
 
 </resources>
