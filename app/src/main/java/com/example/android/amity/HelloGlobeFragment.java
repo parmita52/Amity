@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.mousebird.maply.AttrDictionary;
+import com.mousebird.maply.ComponentObject;
 import com.mousebird.maply.GlobeController;
 import com.mousebird.maply.GlobeMapFragment;
 import com.mousebird.maply.MapController;
@@ -28,6 +29,8 @@ import com.mousebird.maply.SphericalMercatorCoordSystem;
 import com.mousebird.maply.VectorObject;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.util.Log.d;
@@ -110,6 +113,9 @@ public class HelloGlobeFragment extends GlobeMapFragment {
     }
 
     private void insertMarkers() {
+
+        List<ScreenMarker> markers = new ArrayList<>();
+
         MarkerInfo markerInfo = new MarkerInfo();
         Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_marker);
         Point2d markerSize = new Point2d(144, 144);
@@ -119,8 +125,41 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         moskow.loc = Point2d.FromDegrees(37.616667, 55.75); // Longitude, Latitude
         moskow.image = icon;
         moskow.size = markerSize;
+        markers.add(moskow);
 
-        globeControl.addScreenMarker(moskow, markerInfo, MaplyBaseController.ThreadMode.ThreadAny);
+        //  Saint Petersburg - Санкт-Петербург
+        ScreenMarker stPetersburg = new ScreenMarker();
+        stPetersburg.loc = Point2d.FromDegrees(30.3, 59.95);
+        stPetersburg.image = icon;
+        stPetersburg.size = markerSize;
+        markers.add(stPetersburg);
+
+        // Novosibirsk - Новосибирск
+        ScreenMarker novosibirsk = new ScreenMarker();
+        novosibirsk.loc = Point2d.FromDegrees(82.95, 55.05);
+        novosibirsk.image = icon;
+        novosibirsk.size = markerSize;
+        markers.add(novosibirsk);
+
+        // Yekaterinburg - Екатеринбург
+        ScreenMarker yekaterinburg = new ScreenMarker();
+        yekaterinburg.loc = Point2d.FromDegrees(60.583333, 56.833333);
+        yekaterinburg.image = icon;
+        yekaterinburg.size = markerSize;
+        markers.add(yekaterinburg);
+
+        // Nizhny Novgorod - Нижний Новгород
+        ScreenMarker nizhnyNovgorod = new ScreenMarker();
+        nizhnyNovgorod.loc = Point2d.FromDegrees(44.0075, 56.326944);
+        nizhnyNovgorod.image = icon;
+        nizhnyNovgorod.size = markerSize;
+        markers.add(nizhnyNovgorod);
+
+        // Add your markers to the map controller.
+        ComponentObject markersComponentObject = globeControl.addScreenMarkers(markers, markerInfo, MaplyBaseController.ThreadMode.ThreadAny);
+
+        //remove markersComponentObject
+        //globeControl.removeObject(markersComponentObject, MaplyBaseController.ThreadMode.ThreadAny);
     }
 
 }
