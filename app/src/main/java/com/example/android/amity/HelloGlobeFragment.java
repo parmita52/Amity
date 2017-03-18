@@ -28,7 +28,11 @@ import com.mousebird.maply.SelectedObject;
 import com.mousebird.maply.SphericalMercatorCoordSystem;
 import com.mousebird.maply.VectorObject;
 
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +81,9 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         globeControl.animatePositionGeo(-3.6704803, 40.5023056, 5, 1.0);
         globeControl.setKeepNorthUp(true);
         globeControl.setZoomLimits(0.1,1);
+
+        //final String url = "C:\\Users\\Cassandra\\AndroidStudioProjects\\Amity\\app\\src\\main\\assets\\countries.geo.json";
+        //have to change file path based on computer we are testing this on
 
         final String url = "https://raw.githubusercontent.com/jdomingu/ThreeGeoJSON/master/test_geojson/countries_states.geojson";
         GeoJsonHttpTask task = new GeoJsonHttpTask(globeControl);
