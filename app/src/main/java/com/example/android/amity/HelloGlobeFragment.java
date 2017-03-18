@@ -1,6 +1,8 @@
 package com.example.android.amity;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,11 +15,14 @@ import com.mousebird.maply.AttrDictionary;
 import com.mousebird.maply.GlobeController;
 import com.mousebird.maply.GlobeMapFragment;
 import com.mousebird.maply.MapController;
+import com.mousebird.maply.MaplyBaseController;
+import com.mousebird.maply.MarkerInfo;
 import com.mousebird.maply.Point2d;
 import com.mousebird.maply.Point3d;
 import com.mousebird.maply.QuadImageTileLayer;
 import com.mousebird.maply.RemoteTileInfo;
 import com.mousebird.maply.RemoteTileSource;
+import com.mousebird.maply.ScreenMarker;
 import com.mousebird.maply.SelectedObject;
 import com.mousebird.maply.SphericalMercatorCoordSystem;
 import com.mousebird.maply.VectorObject;
@@ -76,6 +81,9 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         // Set controller to be gesture delegate.
         // Needed to allow selection.
         globeControl.gestureDelegate = this;
+
+        // Insert Markers
+        insertMarkers();
     }
 
 
@@ -99,6 +107,20 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         }
 
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    private void insertMarkers() {
+        MarkerInfo markerInfo = new MarkerInfo();
+        Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_marker);
+        Point2d markerSize = new Point2d(144, 144);
+
+        // Moskow - Москва
+        ScreenMarker moskow = new ScreenMarker();
+        moskow.loc = Point2d.FromDegrees(37.616667, 55.75); // Longitude, Latitude
+        moskow.image = icon;
+        moskow.size = markerSize;
+
+        globeControl.addScreenMarker(moskow, markerInfo, MaplyBaseController.ThreadMode.ThreadAny);
     }
 
 }
