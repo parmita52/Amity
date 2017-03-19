@@ -1,33 +1,72 @@
 {
   "project_info": {
-    "project_number": "1004621621470",
-    "project_id": "amity-9abbf"
+    "project_number": "620888971287",
+    "project_id": "amity-1789a"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1004621621470:android:c05027e6b560fe53",
+        "mobilesdk_app_id": "1:620888971287:android:95366a712f876771",
         "android_client_info": {
           "package_name": "com.example.android.amity"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1004621621470-2mfakclj6vhnmdmla4vitcb98smljuk9.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "1004621621470-4nj9a8qh1ngnpd0v1mpgq92on1bknejm.apps.googleusercontent.com",
+          "client_id": "620888971287-gqph0ishv0kd4vdf2ipdjblj9ha1cj4e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.android.amity",
-            "certificate_hash": "43a0fdbac3efe26a8bf9d017733be5f2d9e32ade"
+            "certificate_hash": "bb36e84817ac23f147fd39ad9adf7221cc494e02"
           }
+        },
+        {
+          "client_id": "620888971287-khpv2a0fmj5ip1i2qs6aaevpmp5oq1vu.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBhtP1ePVT1T-7RAhE4icib0CV_Nm61c8c"
+          "current_key": "AIzaSyCeGUKlnlae4CMaXuBlaWMbL1Njnj2MKzU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620888971287:android:c05027e6b560fe53",
+        "android_client_info": {
+          "package_name": "com.example.android.amity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620888971287-s5prsb78j8eseguleatmro7jj3b7rhet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.amity",
+            "certificate_hash": "bb36e84817ac23f147fd39ad9adf7221cc494e02"
+          }
+        },
+        {
+          "client_id": "620888971287-khpv2a0fmj5ip1i2qs6aaevpmp5oq1vu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeGUKlnlae4CMaXuBlaWMbL1Njnj2MKzU"
         }
       ],
       "services": {
