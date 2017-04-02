@@ -36,6 +36,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.selectable;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static android.util.Log.d;
 
@@ -82,10 +83,8 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         globeControl.setKeepNorthUp(true);
         globeControl.setZoomLimits(0.1,1);
 
-        //final String url = "C:\\Users\\Cassandra\\AndroidStudioProjects\\Amity\\app\\src\\main\\assets\\countries.geo.json";
-        //have to change file path based on computer we are testing this on
 
-        final String url = "https://raw.githubusercontent.com/jdomingu/ThreeGeoJSON/master/test_geojson/countries_states.geojson";
+        final String url = "https://raw.githubusercontent.com/superCodeTeam/Amity/master/app/src/main/assets/countries.geo.json";
         GeoJsonHttpTask task = new GeoJsonHttpTask(globeControl);
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
         // Set controller to be gesture delegate.
@@ -96,27 +95,9 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         insertMarkers();
     }
 
-
-    @Override
-    public void userDidSelect(GlobeController globeControl, SelectedObject[] selObjs, Point2d loc, Point2d screenLoc) {
-        loc.setValue(130,45);
-        d("userDidSelect", loc.toString()); //testing
-        d("userDidSelect", screenLoc.toString()); //testing
-        d("userDidSelect", selObjs.toString()); //testing
-        String msg = "Selected feature count: " + selObjs.length;
-        for (SelectedObject obj : selObjs) {
-            // GeoJSON
-            if (obj.selObj instanceof VectorObject) {
-                VectorObject vectorObject = (VectorObject) obj.selObj;
-                d("userDidSelect", vectorObject.toString()); //testing
-                AttrDictionary attributes = vectorObject.getAttributes();
-                d("userDidSelect", attributes.toString()); //testing
-                String adminName = attributes.getString("admin");
-                msg += "\nVector Object: " + adminName + loc.getX() + ", " + loc.getY();
-            }
-        }
-
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+    public class MarkerProperties {
+        public String city;
+        //public String subject;
     }
 
     private void insertMarkers() {
@@ -128,38 +109,58 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         Point2d markerSize = new Point2d(144, 144);
 
         // Moskow - Москва
+        MarkerProperties properties = new MarkerProperties();
+        properties.city = "Moskow";
         ScreenMarker moskow = new ScreenMarker();
         moskow.loc = Point2d.FromDegrees(37.616667, 55.75); // Longitude, Latitude
         moskow.image = icon;
         moskow.size = markerSize;
+        moskow.selectable = true;
+        moskow.userObject = properties;
         markers.add(moskow);
 
         //  Saint Petersburg - Санкт-Петербург
+        properties = new MarkerProperties();
+        properties.city = "Saint Petersburg";
         ScreenMarker stPetersburg = new ScreenMarker();
         stPetersburg.loc = Point2d.FromDegrees(30.3, 59.95);
         stPetersburg.image = icon;
         stPetersburg.size = markerSize;
+        stPetersburg.selectable = true;
+        stPetersburg.userObject = properties;
         markers.add(stPetersburg);
 
         // Novosibirsk - Новосибирск
+        properties = new MarkerProperties();
+        properties.city = "Novosibirsk";
         ScreenMarker novosibirsk = new ScreenMarker();
         novosibirsk.loc = Point2d.FromDegrees(82.95, 55.05);
         novosibirsk.image = icon;
         novosibirsk.size = markerSize;
+        novosibirsk.selectable = true;
+        novosibirsk.userObject = properties;
         markers.add(novosibirsk);
 
         // Yekaterinburg - Екатеринбург
+        properties = new MarkerProperties();
+        properties.city = "Yekaterinburg";
         ScreenMarker yekaterinburg = new ScreenMarker();
         yekaterinburg.loc = Point2d.FromDegrees(60.583333, 56.833333);
         yekaterinburg.image = icon;
         yekaterinburg.size = markerSize;
+        yekaterinburg.selectable = true;
+        yekaterinburg.userObject = properties;
         markers.add(yekaterinburg);
 
         // Nizhny Novgorod - Нижний Новгород
+        properties = new MarkerProperties();
+        properties.city = "Nizhny Novgorod";
         ScreenMarker nizhnyNovgorod = new ScreenMarker();
         nizhnyNovgorod.loc = Point2d.FromDegrees(44.0075, 56.326944);
         nizhnyNovgorod.image = icon;
         nizhnyNovgorod.size = markerSize;
+        nizhnyNovgorod.selectable = true;
+        nizhnyNovgorod.userObject = properties;
         markers.add(nizhnyNovgorod);
 
         // Add your markers to the map controller.
@@ -169,4 +170,31 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         //globeControl.removeObject(markersComponentObject, MaplyBaseController.ThreadMode.ThreadAny);
     }
 
+    @Override
+    public void userDidSelect(GlobeController globeControl, SelectedObject[] selObjs, Point2d loc, Point2d screenLoc) {
+        d("userDidSelect", loc.toString()); //testing
+        d("userDidSelect", screenLoc.toString()); //testing
+        d("userDidSelect", selObjs.toString()); //testing
+        String msg = "Selected feature count: " + selObjs.length;
+        for (SelectedObject obj : selObjs) {
+            // GeoJSON
+            if (obj.selObj instanceof VectorObject) {
+                VectorObject vectorObject = (VectorObject) obj.selObj;
+                d("userDidSelect", vectorObject.toString()); //testing
+                AttrDictionary attributes = vectorObject.getAttributes();
+                d("userDidSelect", attributes.toString()); //testing
+                String adminName = attributes.getString("name");
+                msg += "\nVector Object: " + adminName;
+            }
+            // Screen Marker
+            else if (obj.selObj instanceof ScreenMarker) {
+                ScreenMarker screenMarker = (ScreenMarker) obj.selObj;
+                MarkerProperties properties = (MarkerProperties) screenMarker.userObject;
+                d("userDidSelect", "test" + properties.city);
+                msg += "\nScreen Marker: " + properties.city;
+            }
+        }
+
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+    }
 }
