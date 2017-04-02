@@ -115,6 +115,7 @@
     <string name="title_activity_fabtesting">FABTestingActivity</string>
     <string name="title_activity_your_posts">Your Posts</string>
     <string name="title_activity_map">Welcome</string>
+    <string name="title_activity_users">Users</string>
 
     <string name="fun_stats">Cool stats and facts here</string>
     <string name="title_activity_profile">My Profile</string>

@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.amity.data.AmityContract.AmityEntry;
 import com.example.android.amity.data.AmityDbHelper;
@@ -31,6 +33,8 @@ public class UsersActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        insertUser();
+
         displayDatabaseInfo();
     }
 
@@ -122,7 +126,7 @@ public class UsersActivity extends AppCompatActivity {
         values.put(AmityEntry.COLUMN_EMAIL, "amityiscool@gmail.com");
         values.put(AmityEntry.COLUMN_GENDER, AmityEntry.GENDER_FEMALE);
         values.put(AmityEntry.COLUMN_GMAIL_ID, 12093);
-
+        Log.v("group", "putting stuff in database woohoo");
         // Insert a new row for Toto in the database, returning the ID of that new row.
         // The first argument for db.insert() is the pets table name.
         // The second argument provides the name of a column in which the framework

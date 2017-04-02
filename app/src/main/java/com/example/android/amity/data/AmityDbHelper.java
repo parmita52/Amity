@@ -41,7 +41,8 @@ public class AmityDbHelper extends SQLiteOpenHelper {
                 + AmityEntry.COLUMN_NAME + " TEXT NOT NULL, "
                 + AmityEntry.COLUMN_EMAIL + " TEXT, "
                 + AmityEntry.COLUMN_GENDER + " INTEGER NOT NULL,"
-                + AmityEntry.COLUMN_GMAIL_ID + " TEXT";
+                + AmityEntry.COLUMN_GMAIL_ID + " INTEGER NOT NULL);";
+
 
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_USERS_TABLE);
