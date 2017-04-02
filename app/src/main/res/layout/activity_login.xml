@@ -96,6 +96,37 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"/>
 
+            <!--
+          <Button
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/sign_out_button"
+                     android:layout_gravity="center"
+                     android:text="sign out"
+                     />
+
+                 <Button
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/disconnect_button"
+                     android:layout_gravity="center"
+                     android:text="disconnect"
+                     />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/status"
+                     android:text="status"
+                     />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/sign_out_and_disconnect"
+                     android:text="sign out and disconnect"
+                     />
+                     -->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

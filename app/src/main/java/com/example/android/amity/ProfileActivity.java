@@ -3,23 +3,33 @@ package com.example.android.amity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
-import static com.example.android.amity.R.id.fab_add;
-import static com.example.android.amity.R.id.fab_expand;
-import static com.example.android.amity.R.id.fab_home;
-import static com.example.android.amity.R.id.fab_profile;
-import static com.example.android.amity.R.id.logout;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class ProfileActivity extends AppCompatActivity {
+
+
+public class ProfileActivity extends AppCompatActivity
+    //    implements GoogleApiClient.OnConnectionFailedListener,
+    //    GoogleApiClient.ConnectionCallbacks
+{
     FloatingActionButton fab_expand, fab_add, fab_home, fab_profile;
     Animation FabOpen, FabClose, FabRClockwise, FabRCounterclockwise;
     boolean isOpen = false;
@@ -52,13 +62,22 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(yourPostsIntent);
             }
         });
-      logOut.setOnClickListener(new View.OnClickListener() {
+        logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //mGoogleApiClient.registerConnectionCallbacks(ProfileActivity.this);
+
+         //       Toast.makeText(ProfileActivity.this, "logout clicked", Toast.LENGTH_SHORT).show();
+
                 Intent logOutIntent = new Intent(ProfileActivity.this, LoginActivity.class);
+                logOutIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                logOutIntent.putExtra("methodName", "signOut");
                 startActivity(logOutIntent);
+
             }
         });
+
 
         //          Start of FAB**************************************
         /*
@@ -152,4 +171,35 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+
+
+  //  @Override
+   // public void onConnected(@Nullable Bundle bundle) {
+//        FirebaseAuth.getInstance().signOut();
+//        if (mGoogleApiClient.isConnected()) {
+//            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
+//                @Override
+//                public void onResult(@NonNull Status status) {
+//                    if (status.isSuccess()) {
+//                        Toast.makeText(ProfileActivity.this, "logged out in profile", Toast.LENGTH_SHORT).show();
+//
+//
+//
+//                    }
+//                }
+//            });
+//        }
+//    }
+//
+//    @Override
+//    public void onConnectionSuspended(int i) {
+//        Toast.makeText(ProfileActivity.this, "connection suspended in profile", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void onConnectionFailed(ConnectionResult connectionResult) {
+//        // An unresolvable error has occurred and Google APIs (including Sign-In) will not
+//        // be available.
+//      Toast.makeText(ProfileActivity.this, "connection failed in profile", Toast.LENGTH_SHORT).show();
+//    }
 }
