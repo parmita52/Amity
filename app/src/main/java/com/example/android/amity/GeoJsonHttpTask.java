@@ -19,7 +19,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 
+import static android.util.Log.d;
 import static java.security.AccessController.getContext;
 
 public class GeoJsonHttpTask extends AsyncTask<String, Void, String> {
@@ -49,8 +52,12 @@ public class GeoJsonHttpTask extends AsyncTask<String, Void, String> {
                 String line;
                 while ((line = r.readLine()) != null) {
                     response.append(line);
+                    //does it read the entire json file?
+
                 }
+                d("doInBackground", "the response" + response.toString());
                 return response.toString();
+
             }
         } catch (Exception e) {
             // didn't work
@@ -60,12 +67,17 @@ public class GeoJsonHttpTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String json) {
+        d("onPostExecute", "the json string" + json);
+        //List<String> countries = Arrays.asList(json.split("\"type\":\"Feature\""));
+        //d("onPostExecute", "element of json string" + countries.toString());
+        //splitting the json string into an array so that I can make a Vector Object for each country
         VectorInfo vectorInfo = new VectorInfo();
         vectorInfo.setColor(Color.DKGRAY);
         vectorInfo.setLineWidth(4.f);
         VectorObject object = new VectorObject();
         object.selectable = true;
         if (object.fromGeoJSON(json)) {
+            //find out what the fromGeoJson method is
             controller.addVector(object, vectorInfo, MaplyBaseController.ThreadMode.ThreadAny);
         }
     }

@@ -3,6 +3,7 @@ package com.example.android.amity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ import com.mousebird.maply.RemoteTileSource;
 import com.mousebird.maply.ScreenMarker;
 import com.mousebird.maply.SelectedObject;
 import com.mousebird.maply.SphericalMercatorCoordSystem;
+import com.mousebird.maply.VectorInfo;
 import com.mousebird.maply.VectorObject;
 
 import org.json.JSONObject;
@@ -43,6 +45,8 @@ import static android.util.Log.d;
 
 public class HelloGlobeFragment extends GlobeMapFragment {
 
+    ComponentObject selectedComponentObject;
+    ComponentObject selectedMarkerComponent;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle inState) {
@@ -84,7 +88,7 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         globeControl.setZoomLimits(0.1,1);
 
 
-        final String url = "https://raw.githubusercontent.com/superCodeTeam/Amity/master/app/src/main/assets/countries.geo.json";
+        final String url = "https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json";
         GeoJsonHttpTask task = new GeoJsonHttpTask(globeControl);
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
         // Set controller to be gesture delegate.
@@ -180,11 +184,14 @@ public class HelloGlobeFragment extends GlobeMapFragment {
             // GeoJSON
             if (obj.selObj instanceof VectorObject) {
                 VectorObject vectorObject = (VectorObject) obj.selObj;
-                d("userDidSelect", vectorObject.toString()); //testing
+                d("userDidSelect", "this is it1"+vectorObject.centroid().toString()); //testing
+                d("userDidSelect", "this is it2"+vectorObject.pointInside(loc)); //testing
                 AttrDictionary attributes = vectorObject.getAttributes();
-                d("userDidSelect", attributes.toString()); //testing
+               // attributes.setString("name","India");
+                d("userDidSelect", "this is it 3"+ attributes.toString()); //testing
                 String adminName = attributes.getString("name");
                 msg += "\nVector Object: " + adminName;
+                drawVectorObjectAsSelected(vectorObject);
             }
             // Screen Marker
             else if (obj.selObj instanceof ScreenMarker) {
@@ -192,9 +199,35 @@ public class HelloGlobeFragment extends GlobeMapFragment {
                 MarkerProperties properties = (MarkerProperties) screenMarker.userObject;
                 d("userDidSelect", "test" + properties.city);
                 msg += "\nScreen Marker: " + properties.city;
+                drawScreenMarkerAsSelected(screenMarker);
             }
         }
 
         Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    public void drawVectorObjectAsSelected(VectorObject vectorObject) {
+        if (selectedComponentObject != null) {
+            globeControl.removeObject(selectedComponentObject, MaplyBaseController.ThreadMode.ThreadAny);
+        }
+        VectorInfo vectorInfo = new VectorInfo();
+        vectorInfo.setColor(Color.argb(255,255,140,0)); // Gold
+        vectorInfo.setLineWidth(10.f);
+        vectorInfo.setDrawPriority(Integer.MAX_VALUE); // Make sure it draws on top of unselected vector
+        selectedComponentObject = globeControl.addVector(vectorObject, vectorInfo, MaplyBaseController.ThreadMode.ThreadAny);
+    }
+
+    public void drawScreenMarkerAsSelected(ScreenMarker screenMarker) {
+        if (selectedMarkerComponent != null) {
+            globeControl.removeObject(selectedMarkerComponent, MaplyBaseController.ThreadMode.ThreadAny);
+        }
+        MarkerInfo markerInfo = new MarkerInfo();
+        markerInfo.setDrawPriority(Integer.MAX_VALUE);
+        Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_selected_marker);
+        Point2d markerSize = new Point2d(144, 144);
+        screenMarker.image = icon;
+        screenMarker.size = markerSize;
+        screenMarker.selectable = true;
+        selectedMarkerComponent= globeControl.addScreenMarker(screenMarker, markerInfo, MaplyBaseController.ThreadMode.ThreadAny);
     }
 }
