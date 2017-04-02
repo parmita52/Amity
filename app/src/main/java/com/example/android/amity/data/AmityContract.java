@@ -9,6 +9,7 @@ import android.provider.BaseColumns;
 public final class AmityContract {
     public static abstract class AmityEntry implements BaseColumns {
         public static final String TABLE_NAME = "users";
+        public static final String COLUMN_GMAIL_ID = "gmail email";
         public static final String _ID = BaseColumns._ID;
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_EMAIL = "email";

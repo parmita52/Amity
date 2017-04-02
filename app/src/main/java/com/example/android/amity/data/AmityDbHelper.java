@@ -40,7 +40,8 @@ public class AmityDbHelper extends SQLiteOpenHelper {
                 + AmityEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + AmityEntry.COLUMN_NAME + " TEXT NOT NULL, "
                 + AmityEntry.COLUMN_EMAIL + " TEXT, "
-                + AmityEntry.COLUMN_GENDER + " INTEGER NOT NULL, ";
+                + AmityEntry.COLUMN_GENDER + " INTEGER NOT NULL,"
+                + AmityEntry.COLUMN_GMAIL_ID + " TEXT";
 
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_USERS_TABLE);

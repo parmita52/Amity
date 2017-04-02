@@ -1,12 +1,10 @@
 package com.example.android.amity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +26,23 @@ public class MainActivity extends AppCompatActivity {
 
                 // Start the new activity
                 startActivity(loginIntent);
+            }
+
+        });
+
+        //LOGIN**************************
+        TextView db = (TextView) findViewById(R.id.text_view_user);
+
+        // Set a click listener on that View
+        login.setOnClickListener(new View.OnClickListener() {
+            // The code in this method will be executed when the numbers category is clicked on.
+            @Override
+            public void onClick(View view) {
+                // Create a new intent to open the {@link NumbersActivity}
+                Intent dbIntent = new Intent(MainActivity.this, UsersActivity.class);
+
+                // Start the new activity
+                startActivity(dbIntent);
             }
 
         });
