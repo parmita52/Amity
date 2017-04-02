@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //LOGIN**************************
-        TextView db = (TextView) findViewById(R.id.text_view_user);
+        TextView db = (TextView) findViewById(R.id.db);
 
         // Set a click listener on that View
-        login.setOnClickListener(new View.OnClickListener() {
+        db.setOnClickListener(new View.OnClickListener() {
             // The code in this method will be executed when the numbers category is clicked on.
             @Override
             public void onClick(View view) {

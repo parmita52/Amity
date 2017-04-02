@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.amity.data.AmityContract.AmityEntry;
 import com.example.android.amity.data.AmityDbHelper;
@@ -31,6 +32,8 @@ public class UsersActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        insertUser();
+
         displayDatabaseInfo();
     }
 

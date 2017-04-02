@@ -81,4 +81,11 @@
         android:text="Profile"
         style="@style/mainActivityStyle"/>
 
+    <TextView
+        android:id="@+id/db"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Database"
+        style="@style/mainActivityStyle"/>
+
 </LinearLayout>
