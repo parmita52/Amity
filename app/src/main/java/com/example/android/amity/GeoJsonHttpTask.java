@@ -67,19 +67,39 @@ public class GeoJsonHttpTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String json) {
-        d("onPostExecute", "the json string" + json);
-        //List<String> countries = Arrays.asList(json.split("\"type\":\"Feature\""));
-        //d("onPostExecute", "element of json string" + countries.toString());
+        //d("onPostExecute", "the json string" + json);
+
         //splitting the json string into an array so that I can make a Vector Object for each country
-        VectorInfo vectorInfo = new VectorInfo();
-        vectorInfo.setColor(Color.DKGRAY);
-        vectorInfo.setLineWidth(4.f);
-        VectorObject object = new VectorObject();
-        object.selectable = true;
-        if (object.fromGeoJSON(json)) {
-            //find out what the fromGeoJson method is
-            controller.addVector(object, vectorInfo, MaplyBaseController.ThreadMode.ThreadAny);
+        String[] countries = json.split("\\]\\]\\}\\}\\,");
+        //d("onPostExecute", "element of json string" + " " + countries.length+countries[1]);
+        int i = 0;
+        while (i < countries.length-1){
+            d("onPostExecute", "first loop");
+            countries[i] = countries[i] + "\\]\\]\\}\\}\\]\\}";
+            i++;
         }
+
+        countries[1] = "{\"type\":\"FeatureCollection\",\"features\":[" + countries[1];
+
+        d("onPostExecute", "element of json string" + " " + countries.length +countries[0]);
+        d("onPostExecute", "element of json string" + " " + countries.length+countries[1]);
+
+        int j = 0;
+        while (j < countries.length){
+            d("onPostExecute", "second loop");
+            VectorInfo vectorInfo = new VectorInfo();
+            vectorInfo.setColor(Color.DKGRAY);
+            vectorInfo.setLineWidth(4.f);
+            VectorObject object = new VectorObject();
+            object.selectable = true;
+            if (object.fromGeoJSON(countries[j])) {
+                //find out what the fromGeoJson method is
+                d("onPostExecute", "adding vector");
+                controller.addVector(object, vectorInfo, MaplyBaseController.ThreadMode.ThreadAny);
+            }
+            j++;
+        }
+
     }
 
 }
