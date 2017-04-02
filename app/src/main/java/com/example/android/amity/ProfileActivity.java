@@ -153,6 +153,7 @@ public class ProfileActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent homeIntent = new Intent(ProfileActivity.this, MapActivity.class);
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(homeIntent);
             }
         });
@@ -166,6 +167,7 @@ public class ProfileActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent profileIntent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                profileIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(profileIntent);
             }
         });
