@@ -75,14 +75,15 @@ public class GeoJsonHttpTask extends AsyncTask<String, Void, String> {
         int i = 0;
         while (i < countries.length-1){
             d("onPostExecute", "first loop");
-            countries[i] = countries[i] + "\\]\\]\\}\\}\\]\\}";
+            countries[i] = countries[i] + "]]}}]}";
             i++;
         }
 
         countries[1] = "{\"type\":\"FeatureCollection\",\"features\":[" + countries[1];
 
-        d("onPostExecute", "element of json string" + " " + countries.length +countries[0]);
+        d("onPostExecute", "element of json string" + " " + countries.length +countries[0].substring(2000));
         d("onPostExecute", "element of json string" + " " + countries.length+countries[1]);
+
 
         int j = 0;
         while (j < countries.length){
