@@ -24,4 +24,13 @@ public final class AmityContract {
         public static final int GENDER_UNKNOWN = 0;
 
     }
+
+    public static abstract  class AmityPost implements BaseColumns{
+        public static final String TABLE_NAME = "posts";
+        public static final String _ID = BaseColumns._ID;
+        public static final String COLUMN_USERID = "user_id";
+        public static final String COLUMN_TITLE = "title";
+        public static final String COLUMN_CONTENT  = "content";
+        public static final String COLUMN_DATE = "date";
+    }
 }

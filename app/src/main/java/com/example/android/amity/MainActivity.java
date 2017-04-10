@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+//import static com.example.android.amity.R.id.setup;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -175,19 +177,52 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        //FAB TESTING**************************
-        TextView fabTesting = (TextView) findViewById(R.id.fab_testing);
+//        //FAB TESTING**************************
+//        TextView fabTesting = (TextView) findViewById(R.id.fab_testing);
+//
+//        // Set a click listener on that View
+//        fabTesting.setOnClickListener(new View.OnClickListener() {
+//            // The code in this method will be executed when the numbers category is clicked on.
+//            @Override
+//            public void onClick(View view) {
+//                // Create a new intent to open the {@link NumbersActivity}
+//                Intent fabTestingIntent = new Intent(MainActivity.this, FABTestingActivity.class);
+//
+//                // Start the new activity
+//                startActivity(fabTestingIntent);
+//            }
+//
+//        });
+
+//        //setup TESTING**************************
+//        TextView setup = (TextView) findViewById(R.id.setup);
+//
+//        // Set a click listener on that View
+//       setup.setOnClickListener(new View.OnClickListener() {
+//            // The code in this method will be executed when the numbers category is clicked on.
+//            @Override
+//            public void onClick(View view) {
+//                // Create a new intent to open the {@link NumbersActivity}
+//                Intent setupIntent = new Intent(MainActivity.this, SetupActivity.class);
+//
+//                // Start the new activity
+//                startActivity(setupIntent);
+//            }
+//
+//        });
+                //setup TESTING**************************
+        TextView server = (TextView) findViewById(R.id.server);
 
         // Set a click listener on that View
-        fabTesting.setOnClickListener(new View.OnClickListener() {
+       server.setOnClickListener(new View.OnClickListener() {
             // The code in this method will be executed when the numbers category is clicked on.
             @Override
             public void onClick(View view) {
                 // Create a new intent to open the {@link NumbersActivity}
-                Intent fabTestingIntent = new Intent(MainActivity.this, FABTestingActivity.class);
+                Intent serverIntent = new Intent(MainActivity.this,ServerActivity.class);
 
                 // Start the new activity
-                startActivity(fabTestingIntent);
+                startActivity(serverIntent);
             }
 
         });

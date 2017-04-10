@@ -5,13 +5,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.android.amity.data.AmityContract.AmityEntry;
+import com.example.android.amity.data.AmityContract.AmityPost;
 
 /**
  * Database helper for Pets app. Manages database creation and version management.
  */
 public class AmityDbHelper extends SQLiteOpenHelper {
 
-    public static final String LOG_TAG = AmityDbHelper.class.getSimpleName();
+   // public static final String LOG_TAG = AmityDbHelper.class.getSimpleName();
 
     /** Name of the database file */
     private static final String DATABASE_NAME = "amity.db";
@@ -40,12 +41,22 @@ public class AmityDbHelper extends SQLiteOpenHelper {
                 + AmityEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + AmityEntry.COLUMN_NAME + " TEXT NOT NULL, "
                 + AmityEntry.COLUMN_EMAIL + " TEXT, "
-                + AmityEntry.COLUMN_GENDER + " INTEGER NOT NULL,"
+                + AmityEntry.COLUMN_GENDER + " INTEGER NOT NULL, "
                 + AmityEntry.COLUMN_GMAIL_ID + " INTEGER NOT NULL);";
 
 
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_USERS_TABLE);
+
+        String SQL_CREATE_POSTS_TABLE =  "CREATE TABLE " + AmityPost.TABLE_NAME + " ("
+                + AmityPost._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + AmityPost.COLUMN_USERID + " INTEGER, "
+                + AmityPost.COLUMN_TITLE + " TEXT NOT NULL, "
+                + AmityPost.COLUMN_CONTENT + " TEXT NOT NULL, "
+                + AmityPost.COLUMN_DATE + " INTEGER);";
+
+        // Execute the SQL statement
+        db.execSQL(SQL_CREATE_POSTS_TABLE);
     }
 
     /**

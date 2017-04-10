@@ -58,7 +58,6 @@
             android:name=".ResultsActivity"
             android:label="@string/title_activity_results"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".CreatePostActivity"
             android:label="@string/title_activity_create_post"
@@ -78,11 +77,13 @@
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UsersActivity"
             android:label="@string/title_activity_users"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SetupActivity" />
+        <activity android:name=".ServerActivity"></activity>
     </application>
 
 </manifest>

@@ -23,7 +23,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
@@ -163,7 +163,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     // [START signOut]
     private void signOut() {
-        FirebaseAuth.getInstance().signOut();
+      //  FirebaseAuth.getInstance().signOut();
         if (mGoogleApiClient.isConnected()) {
             Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
                 @Override
