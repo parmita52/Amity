@@ -88,7 +88,7 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         globeControl.setZoomLimits(0.1,1);
 
 
-        final String url = "https://raw.githubusercontent.com/superCodeTeam/Amity/master/app/src/main/assets/countries.geo.json";
+        final String url = "https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json";
         GeoJsonHttpTask task = new GeoJsonHttpTask(globeControl);
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
         // Set controller to be gesture delegate.

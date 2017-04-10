@@ -74,12 +74,17 @@ public class GeoJsonHttpTask extends AsyncTask<String, Void, String> {
         //d("onPostExecute", "element of json string" + " " + countries.length+countries[1]);
         int i = 0;
         while (i < countries.length-1){
-            d("onPostExecute", "first loop");
+            //d("onPostExecute", "first loop");
             countries[i] = countries[i] + "]]}}]}";
             i++;
         }
 
-        countries[1] = "{\"type\":\"FeatureCollection\",\"features\":[" + countries[1];
+        int k = 1;
+        while (k < countries.length){
+            countries[k] = "{\"type\":\"FeatureCollection\",\"features\":[" + countries[k];
+        }
+
+
 
         d("onPostExecute", "element of json string" + " " + countries.length +countries[0].substring(2000));
         d("onPostExecute", "element of json string" + " " + countries.length+countries[1]);
@@ -87,7 +92,7 @@ public class GeoJsonHttpTask extends AsyncTask<String, Void, String> {
 
         int j = 0;
         while (j < countries.length){
-            d("onPostExecute", "second loop");
+            //d("onPostExecute", "second loop");
             VectorInfo vectorInfo = new VectorInfo();
             vectorInfo.setColor(Color.DKGRAY);
             vectorInfo.setLineWidth(4.f);
@@ -95,7 +100,7 @@ public class GeoJsonHttpTask extends AsyncTask<String, Void, String> {
             object.selectable = true;
             if (object.fromGeoJSON(countries[j])) {
                 //find out what the fromGeoJson method is
-                d("onPostExecute", "adding vector");
+                //d("onPostExecute", "adding vector");
                 controller.addVector(object, vectorInfo, MaplyBaseController.ThreadMode.ThreadAny);
             }
             j++;
