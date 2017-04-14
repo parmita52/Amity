@@ -1,6 +1,7 @@
 package com.example.android.amity;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -112,60 +113,71 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         Bitmap icon = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.ic_marker);
         Point2d markerSize = new Point2d(144, 144);
 
-        // Moskow - Москва
+        // Manaus
         MarkerProperties properties = new MarkerProperties();
-        properties.city = "Moskow";
-        ScreenMarker moskow = new ScreenMarker();
-        moskow.loc = Point2d.FromDegrees(37.616667, 55.75); // Longitude, Latitude
-        moskow.image = icon;
-        moskow.size = markerSize;
-        moskow.selectable = true;
-        moskow.userObject = properties;
-        markers.add(moskow);
+        properties.city = "Manaus";
+        ScreenMarker ms = new ScreenMarker();
+        ms.loc = Point2d.FromDegrees(-60.0217, -3.1190); // Longitude, Latitude
+        ms.image = icon;
+        ms.size = markerSize;
+        ms.selectable = true;
+        ms.userObject = properties;
+        markers.add(ms);
 
-        //  Saint Petersburg - Санкт-Петербург
+        //  Kansas City
         properties = new MarkerProperties();
-        properties.city = "Saint Petersburg";
-        ScreenMarker stPetersburg = new ScreenMarker();
-        stPetersburg.loc = Point2d.FromDegrees(30.3, 59.95);
-        stPetersburg.image = icon;
-        stPetersburg.size = markerSize;
-        stPetersburg.selectable = true;
-        stPetersburg.userObject = properties;
-        markers.add(stPetersburg);
+        properties.city = "Kansas City";
+        ScreenMarker kc = new ScreenMarker();
+        kc.loc = Point2d.FromDegrees(-94.5786, 39.0997);
+        kc.image = icon;
+        kc.size = markerSize;
+        kc.selectable = true;
+        kc.userObject = properties;
+        markers.add(kc);
 
-        // Novosibirsk - Новосибирск
+        // Alice Springs (Australia)
         properties = new MarkerProperties();
-        properties.city = "Novosibirsk";
-        ScreenMarker novosibirsk = new ScreenMarker();
-        novosibirsk.loc = Point2d.FromDegrees(82.95, 55.05);
-        novosibirsk.image = icon;
-        novosibirsk.size = markerSize;
-        novosibirsk.selectable = true;
-        novosibirsk.userObject = properties;
-        markers.add(novosibirsk);
+        properties.city = "Alice Springs";
+        ScreenMarker as = new ScreenMarker();
+        as.loc = Point2d.FromDegrees(133.8807, -23.6980);
+        as.image = icon;
+        as.size = markerSize;
+        as.selectable = true;
+        as.userObject = properties;
+        markers.add(as);
 
-        // Yekaterinburg - Екатеринбург
+        // Prague
         properties = new MarkerProperties();
-        properties.city = "Yekaterinburg";
-        ScreenMarker yekaterinburg = new ScreenMarker();
-        yekaterinburg.loc = Point2d.FromDegrees(60.583333, 56.833333);
-        yekaterinburg.image = icon;
-        yekaterinburg.size = markerSize;
-        yekaterinburg.selectable = true;
-        yekaterinburg.userObject = properties;
-        markers.add(yekaterinburg);
+        properties.city = "Prague";
+        ScreenMarker pg = new ScreenMarker();
+        pg.loc = Point2d.FromDegrees(14.4378, 50.0755);
+        pg.image = icon;
+        pg.size = markerSize;
+        pg.selectable = true;
+        pg.userObject = properties;
+        markers.add(pg);
 
-        // Nizhny Novgorod - Нижний Новгород
+        // Nagpur
         properties = new MarkerProperties();
-        properties.city = "Nizhny Novgorod";
-        ScreenMarker nizhnyNovgorod = new ScreenMarker();
-        nizhnyNovgorod.loc = Point2d.FromDegrees(44.0075, 56.326944);
-        nizhnyNovgorod.image = icon;
-        nizhnyNovgorod.size = markerSize;
-        nizhnyNovgorod.selectable = true;
-        nizhnyNovgorod.userObject = properties;
-        markers.add(nizhnyNovgorod);
+        properties.city = "Nagpur";
+        ScreenMarker np = new ScreenMarker();
+        np.loc = Point2d.FromDegrees(79.0882, 21.1458);
+        np.image = icon;
+        np.size = markerSize;
+        np.selectable = true;
+        np.userObject = properties;
+        markers.add(np);
+
+        // Lodja
+        properties = new MarkerProperties();
+        properties.city = "Lodja";
+        ScreenMarker lg = new ScreenMarker();
+        lg.loc = Point2d.FromDegrees(23.5967, -3.5245);
+        lg.image = icon;
+        lg.size = markerSize;
+        lg.selectable = true;
+        lg.userObject = properties;
+        markers.add(lg);
 
         // Add your markers to the map controller.
         ComponentObject markersComponentObject = globeControl.addScreenMarkers(markers, markerInfo, MaplyBaseController.ThreadMode.ThreadAny);
@@ -176,30 +188,34 @@ public class HelloGlobeFragment extends GlobeMapFragment {
 
     @Override
     public void userDidSelect(GlobeController globeControl, SelectedObject[] selObjs, Point2d loc, Point2d screenLoc) {
-        d("userDidSelect", loc.toString()); //testing
-        d("userDidSelect", screenLoc.toString()); //testing
-        d("userDidSelect", selObjs.toString()); //testing
-        String msg = "Selected feature count: " + selObjs.length;
+        //d("userDidSelect", loc.toString()); //testing
+        //d("userDidSelect", screenLoc.toString()); //testing
+        //d("userDidSelect", selObjs.toString()); //testing
+        String msg = "";
         for (SelectedObject obj : selObjs) {
             // GeoJSON
             if (obj.selObj instanceof VectorObject) {
                 VectorObject vectorObject = (VectorObject) obj.selObj;
-                d("userDidSelect", "this is it1"+vectorObject.centroid().toString()); //testing
-                d("userDidSelect", "this is it2"+vectorObject.pointInside(loc)); //testing
+                //d("userDidSelect", "this is it1"+vectorObject.centroid().toString()); //testing
+                //d("userDidSelect", "this is it2"+vectorObject.pointInside(loc)); //testing
                 AttrDictionary attributes = vectorObject.getAttributes();
                // attributes.setString("name","India");
-                d("userDidSelect", "this is it 3"+ attributes.toString()); //testing
+                //d("userDidSelect", "this is it 3"+ attributes.toString()); //testing
                 String adminName = attributes.getString("name");
-                msg += "\nVector Object: " + adminName;
+                msg += adminName;
                 drawVectorObjectAsSelected(vectorObject);
+                Intent postIntent = new Intent(getActivity(), TopPostsActivity.class);
+                startActivity(postIntent);
             }
             // Screen Marker
             else if (obj.selObj instanceof ScreenMarker) {
                 ScreenMarker screenMarker = (ScreenMarker) obj.selObj;
                 MarkerProperties properties = (MarkerProperties) screenMarker.userObject;
-                d("userDidSelect", "test" + properties.city);
-                msg += "\nScreen Marker: " + properties.city;
+                //d("userDidSelect", "test" + properties.city);
+                msg += "\n" + properties.city;
                 drawScreenMarkerAsSelected(screenMarker);
+                Intent postIntent = new Intent(getActivity(), PostActivity.class);
+                startActivity(postIntent);
             }
         }
 
@@ -211,7 +227,7 @@ public class HelloGlobeFragment extends GlobeMapFragment {
             globeControl.removeObject(selectedComponentObject, MaplyBaseController.ThreadMode.ThreadAny);
         }
         VectorInfo vectorInfo = new VectorInfo();
-        vectorInfo.setColor(Color.argb(255,255,140,0)); // Gold
+        vectorInfo.setColor(Color.argb(0, 0, 126, 175)); // sig. color
         vectorInfo.setLineWidth(10.f);
         vectorInfo.setDrawPriority(Integer.MAX_VALUE); // Make sure it draws on top of unselected vector
         selectedComponentObject = globeControl.addVector(vectorObject, vectorInfo, MaplyBaseController.ThreadMode.ThreadAny);
