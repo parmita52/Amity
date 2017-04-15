@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -225,9 +227,12 @@ public class LoginActivity extends AppCompatActivity implements
         }
     }
 
+
     private void updateUI(boolean signedIn) {
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.pling);
+            mp.start();
             // findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
             //   findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {

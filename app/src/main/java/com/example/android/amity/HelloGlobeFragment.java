@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -204,6 +205,8 @@ public class HelloGlobeFragment extends GlobeMapFragment {
                 String adminName = attributes.getString("name");
                 msg += adminName;
                 drawVectorObjectAsSelected(vectorObject);
+                MediaPlayer mp = MediaPlayer.create(getActivity(), R.raw.button);
+                mp.start();
                 Intent postIntent = new Intent(getActivity(), TopPostsActivity.class);
                 startActivity(postIntent);
             }
@@ -214,6 +217,8 @@ public class HelloGlobeFragment extends GlobeMapFragment {
                 //d("userDidSelect", "test" + properties.city);
                 msg += "\n" + properties.city;
                 drawScreenMarkerAsSelected(screenMarker);
+                MediaPlayer mp = MediaPlayer.create(getActivity(), R.raw.button);
+                mp.start();
                 Intent postIntent = new Intent(getActivity(), PostActivity.class);
                 startActivity(postIntent);
             }
