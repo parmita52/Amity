@@ -2,6 +2,7 @@ package com.example.android.amity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -74,6 +75,8 @@ public class ProfileActivity extends AppCompatActivity
                 logOutIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 logOutIntent.putExtra("methodName", "signOut");
                 startActivity(logOutIntent);
+                MediaPlayer mp = MediaPlayer.create(ProfileActivity.this, R.raw.pling);
+                mp.start();
 
             }
         });
