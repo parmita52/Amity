@@ -44,7 +44,7 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".PostActivity"
-            android:label="@string/title_activity_post"
+            android:label="Blend of Cultures       Riya Patel"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TopPostsActivity"
