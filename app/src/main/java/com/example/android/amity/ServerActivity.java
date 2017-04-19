@@ -11,13 +11,24 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.example.android.amity.LoginActivity.requestQueue;
 
 public class ServerActivity extends AppCompatActivity {
 
@@ -36,16 +47,62 @@ public class ServerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Instantiate the RequestQueue.
+
+                // requestQueue.start();
+//                String url = "http://amitty.com/create_post.php";
+////
+//// Request a string response from the provided URL.
+//                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+//                        new com.android.volley.Response.Listener<String>() {
+//                            @Override
+//                            public void onResponse(String response) {
+//
+//                                requestQueue.stop();
+//                            }
+//                        }, new com.android.volley.Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        mTextView.setText("something went wrong");
+//                    }
+//                }){
+//                    @Override
+//                    protected Map<String, String> getParams() throws AuthFailureError {
+//                        Map<String, String> params = new HashMap<String, String>();
+//                        params.put("user_id","1234" );
+//                        params.put("title", "1 title");
+//                        params.put("content", "1 content");
+//                        return params;
+//
+//                    }   };
+//// Add the request to the RequestQueue.
+//                requestQueue.add(stringRequest);
+
+
+                String url = "http://amitty.com/read_posts.php";
                 final RequestQueue requestQueue = Volley.newRequestQueue(ServerActivity.this);
-                String url = "http://amitty.com/index.php";
 
 // Request a string response from the provided URL.
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new com.android.volley.Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                            mTextView.setText(response);
-                                requestQueue.stop();
+                                try {
+                                    String s= "";
+                                    JSONArray jsonArray = new JSONArray(response);
+                                   // Toast.makeText(ServerActivity.this, jsonArray.toString(), Toast.LENGTH_LONG).show();
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                    s += jsonObject.getString("user_id");
+
+                                    }
+                                    mTextView.setText(s);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                               requestQueue.stop();
                             }
                         }, new com.android.volley.Response.ErrorListener() {
                     @Override
@@ -56,12 +113,45 @@ public class ServerActivity extends AppCompatActivity {
                 );
 // Add the request to the RequestQueue.
                 requestQueue.add(stringRequest);
+
+
+//                String url = "http://amitty.com/amitytest.php";
+//                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url, null, new com.android.volley.Response.Listener<JSONArray>() {
+//
+//                    @Override
+//                    public void onResponse(JSONArray response) {
+//
+//                        for (int i = 0; i < response.length(); i++){
+//                            try {
+//                                JSONObject jsonObject = response.getJSONObject(i);
+//                                String s = jsonObject.toString();
+//                                mTextView.setText(mTextView + s);
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//
+//
+//                        }
+//                    }
+//                }, new com.android.volley.Response.ErrorListener() {
+//
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        mTextView.setText("error");
+//                    }
+//                });
+//
+//
+//                requestQueue.add(jsonArrayRequest);
+//            }
+//
+//        });
+
+
             }
+        });
 
-    });
-
-}
-
+    }
 //package com.example.connect2;
 
 

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -43,6 +44,13 @@ public class LoginActivity extends AppCompatActivity implements
     //   private TextView mStatusTextView;
     private ProgressDialog mProgressDialog;
     private boolean logout = false;
+
+
+    public static String userName = "";
+    public static String userEmail = "";
+    public static String userGmailID = "";
+
+    public static RequestQueue requestQueue;
 
 
     @Override
@@ -142,6 +150,12 @@ public class LoginActivity extends AppCompatActivity implements
             GoogleSignInAccount acct = result.getSignInAccount();
             //   mStatusTextView.setText(acct.getDisplayName() + " signed in");
             updateUI(true);
+            userName = acct.getDisplayName();
+            userEmail = acct.getEmail();
+            userGmailID = acct.getId();
+
+            //requestQueue = MySingleton.getInstance(this.getApplicationContext()).getRequestQueue();
+
 
             Intent mapIntent = new Intent(LoginActivity.this, MapActivity.class);
             startActivity(mapIntent);

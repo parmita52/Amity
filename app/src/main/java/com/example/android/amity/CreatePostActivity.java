@@ -10,15 +10,32 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.example.android.amity.LoginActivity.requestQueue;
+import static com.example.android.amity.LoginActivity.userGmailID;
+import static com.example.android.amity.LoginActivity.userName;
 import static com.example.android.amity.R.id.server;
+import static com.example.android.amity.R.id.title;
 
 public class CreatePostActivity extends AppCompatActivity {
     FloatingActionButton fab_expand, fab_add, fab_home, fab_profile;
     Animation FabOpen, FabClose, FabRClockwise, FabRCounterclockwise;
     boolean isOpen = false;
 
-
+     String content = "";
+     String title = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +49,51 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Create a new intent to open the {@link NumbersActivity}
+
+                EditText c = (EditText)findViewById(R.id.edit_create_post_content);
+                content = c.getText().toString();
+
+                EditText t = (EditText)findViewById(R.id.edit_create_post_title);
+                title = t.getText().toString();
+
+
+                RequestQueue requestQueue = Volley.newRequestQueue(CreatePostActivity.this);
+              //  requestQueue.start();
+                String url = "http://amitty.com/create_post.php";
+//
+// Request a string response from the provided URL.
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                        new com.android.volley.Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if (response.equals("connection failed")) {
+                                    Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_SHORT).show();
+                                }
+                                if (response.equals("Error while insertion...")){
+                                    Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_SHORT).show();
+                                }
+                                Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_LONG).show();
+
+                            }
+                        }, new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(CreatePostActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("user_id", userGmailID );
+                        params.put("name", userName);
+                        params.put("title", title);
+                        params.put("content", content);
+                        return params;
+
+                    }   };
+// Add the request to the RequestQueue.
+                requestQueue.add(stringRequest);
+
                 Intent serverIntent = new Intent(CreatePostActivity.this,YourPostsActivity.class);
 
                 // Start the new activity
