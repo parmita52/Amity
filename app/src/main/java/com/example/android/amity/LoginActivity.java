@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements
     public static String userEmail = "";
     public static String userGmailID = "";
 
-    public static RequestQueue requestQueue;
+
 
 
     @Override
@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity implements
             userEmail = acct.getEmail();
             userGmailID = acct.getId();
 
-            //requestQueue = MySingleton.getInstance(this.getApplicationContext()).getRequestQueue();
+           RequestQueue requestQueue = MySingleton.getInstance(this.getApplicationContext()).getRequestQueue();
 
 
             Intent mapIntent = new Intent(LoginActivity.this, MapActivity.class);
@@ -319,5 +319,8 @@ public class LoginActivity extends AppCompatActivity implements
         //   Toast.makeText(LoginActivity.this, "on resume method", Toast.LENGTH_SHORT).show();
         super.onResume();
     }
+
+
+
 
 }

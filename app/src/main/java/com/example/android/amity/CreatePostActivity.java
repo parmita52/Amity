@@ -36,7 +36,6 @@ public class CreatePostActivity extends AppCompatActivity {
     String content = "";
     String title = "";
     String country = "";
-    String city = "";
 
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
@@ -55,17 +54,18 @@ public class CreatePostActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-      spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-          @Override
-          public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            country = parent.getItemAtPosition(position).toString();
-          }
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                country = parent.getItemAtPosition(position).toString();
+             //   Toast.makeText(CreatePostActivity.this, country, Toast.LENGTH_SHORT).show();
+            }
 
-          @Override
-          public void onNothingSelected(AdapterView<?> parent) {
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-          }
-      });
+            }
+        });
 
         Button button = (Button) findViewById(R.id.create_post_button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -80,8 +80,8 @@ public class CreatePostActivity extends AppCompatActivity {
                 EditText t = (EditText) findViewById(R.id.edit_create_post_title);
                 title = t.getText().toString();
 
-
-                RequestQueue requestQueue = Volley.newRequestQueue(CreatePostActivity.this);
+RequestQueue requestQueue = MySingleton.getInstance(null).getRequestQueue();
+            //    RequestQueue requestQueue = Volley.newRequestQueue(CreatePostActivity.this);
                 //  requestQueue.start();
                 String url = "http://amitty.com/create_post.php";
 //
@@ -96,7 +96,7 @@ public class CreatePostActivity extends AppCompatActivity {
                                 if (response.equals("Error while insertion...")) {
                                     Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_LONG).show();
+                               // Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_LONG).show();
 
                             }
                         }, new com.android.volley.Response.ErrorListener() {
@@ -112,6 +112,7 @@ public class CreatePostActivity extends AppCompatActivity {
                         params.put("name", userName);
                         params.put("title", title);
                         params.put("content", content);
+                        params.put("country", country);
                         return params;
 
                     }

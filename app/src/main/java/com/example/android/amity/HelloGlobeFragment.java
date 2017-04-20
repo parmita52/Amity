@@ -219,6 +219,12 @@ public class HelloGlobeFragment extends GlobeMapFragment {
                 drawScreenMarkerAsSelected(screenMarker);
                 MediaPlayer mp = MediaPlayer.create(getActivity(), R.raw.button);
                 mp.start();
+
+
+
+
+
+
                 Intent postIntent = new Intent(getActivity(), PostActivity.class);
                 startActivity(postIntent);
             }

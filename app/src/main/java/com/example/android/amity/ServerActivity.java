@@ -28,7 +28,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.android.amity.LoginActivity.requestQueue;
 
 public class ServerActivity extends AppCompatActivity {
 
@@ -78,8 +77,8 @@ public class ServerActivity extends AppCompatActivity {
 //                requestQueue.add(stringRequest);
 
 
-                String url = "http://amitty.com/read_posts.php";
-                final RequestQueue requestQueue = Volley.newRequestQueue(ServerActivity.this);
+                                String url = "http://amitty.com/read_posts.php";
+                RequestQueue requestQueue = MySingleton.getInstance(null).getRequestQueue();
 
 // Request a string response from the provided URL.
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
@@ -89,7 +88,7 @@ public class ServerActivity extends AppCompatActivity {
                                 try {
                                     String s= "";
                                     JSONArray jsonArray = new JSONArray(response);
-                                   // Toast.makeText(ServerActivity.this, jsonArray.toString(), Toast.LENGTH_LONG).show();
+                                    // Toast.makeText(ServerActivity.this, jsonArray.toString(), Toast.LENGTH_LONG).show();
                                     for (int i = 0; i < jsonArray.length(); i++) {
                                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                                         s += jsonObject.getString("name");
@@ -105,7 +104,6 @@ public class ServerActivity extends AppCompatActivity {
                                 }
 
 
-                               requestQueue.stop();
                             }
                         }, new com.android.volley.Response.ErrorListener() {
                     @Override
