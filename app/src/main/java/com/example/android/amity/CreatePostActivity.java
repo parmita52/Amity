@@ -3,7 +3,6 @@ package com.example.android.amity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -26,11 +25,8 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.android.amity.LoginActivity.requestQueue;
 import static com.example.android.amity.LoginActivity.userGmailID;
 import static com.example.android.amity.LoginActivity.userName;
-import static com.example.android.amity.R.id.server;
-import static com.example.android.amity.R.id.title;
 
 public class CreatePostActivity extends AppCompatActivity {
     FloatingActionButton fab_expand, fab_add, fab_home, fab_profile;
@@ -40,6 +36,7 @@ public class CreatePostActivity extends AppCompatActivity {
     String content = "";
     String title = "";
     String country = "";
+    String city = "";
 
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
