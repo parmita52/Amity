@@ -92,7 +92,10 @@ public class ServerActivity extends AppCompatActivity {
                                    // Toast.makeText(ServerActivity.this, jsonArray.toString(), Toast.LENGTH_LONG).show();
                                     for (int i = 0; i < jsonArray.length(); i++) {
                                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                    s += jsonObject.getString("user_id");
+                                        s += jsonObject.getString("name");
+                                        s += jsonObject.getString("title");
+                                        s += jsonObject.getString("content");
+                                        s += jsonObject.getString("date");
 
                                     }
                                     mTextView.setText(s);

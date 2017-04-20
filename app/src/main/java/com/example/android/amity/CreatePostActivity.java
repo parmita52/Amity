@@ -9,8 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -34,14 +37,38 @@ public class CreatePostActivity extends AppCompatActivity {
     Animation FabOpen, FabClose, FabRClockwise, FabRCounterclockwise;
     boolean isOpen = false;
 
-     String content = "";
-     String title = "";
+    String content = "";
+    String title = "";
+    String country = "";
+
+    Spinner spinner;
+    ArrayAdapter<CharSequence> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_post);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        spinner = (Spinner) findViewById(R.id.spinner);
+        adapter = ArrayAdapter.createFromResource(this,
+                R.array.countries_array, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+      spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+          @Override
+          public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            country = parent.getItemAtPosition(position).toString();
+          }
+
+          @Override
+          public void onNothingSelected(AdapterView<?> parent) {
+
+          }
+      });
 
         Button button = (Button) findViewById(R.id.create_post_button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -50,15 +77,15 @@ public class CreatePostActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Create a new intent to open the {@link NumbersActivity}
 
-                EditText c = (EditText)findViewById(R.id.edit_create_post_content);
+                EditText c = (EditText) findViewById(R.id.edit_create_post_content);
                 content = c.getText().toString();
 
-                EditText t = (EditText)findViewById(R.id.edit_create_post_title);
+                EditText t = (EditText) findViewById(R.id.edit_create_post_title);
                 title = t.getText().toString();
 
 
                 RequestQueue requestQueue = Volley.newRequestQueue(CreatePostActivity.this);
-              //  requestQueue.start();
+                //  requestQueue.start();
                 String url = "http://amitty.com/create_post.php";
 //
 // Request a string response from the provided URL.
@@ -69,7 +96,7 @@ public class CreatePostActivity extends AppCompatActivity {
                                 if (response.equals("connection failed")) {
                                     Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                                if (response.equals("Error while insertion...")){
+                                if (response.equals("Error while insertion...")) {
                                     Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
                                 Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_LONG).show();
@@ -80,35 +107,28 @@ public class CreatePostActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(CreatePostActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
                     }
-                }){
+                }) {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
-                        params.put("user_id", userGmailID );
+                        params.put("user_id", userGmailID);
                         params.put("name", userName);
                         params.put("title", title);
                         params.put("content", content);
                         return params;
 
-                    }   };
+                    }
+                };
 // Add the request to the RequestQueue.
                 requestQueue.add(stringRequest);
 
-                Intent serverIntent = new Intent(CreatePostActivity.this,YourPostsActivity.class);
+                Intent serverIntent = new Intent(CreatePostActivity.this, YourPostsActivity.class);
 
                 // Start the new activity
                 startActivity(serverIntent);
             }
 
         });
-
-
-
-
-
-
-
-
 
 
         //          Start of FAB**************************************

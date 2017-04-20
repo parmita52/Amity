@@ -9,7 +9,7 @@ public class Post {
     private String author;
     private String content;
 
-    public Post(String t, String a, String c)
+    public Post(String t, String a, String c )
     {
         title = t;
         author =a;
