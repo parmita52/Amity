@@ -120,6 +120,7 @@ RequestQueue requestQueue = MySingleton.getInstance(null).getRequestQueue();
 // Add the request to the RequestQueue.
                 requestQueue.add(stringRequest);
 
+
                 Intent serverIntent = new Intent(CreatePostActivity.this, YourPostsActivity.class);
 
                 // Start the new activity
@@ -220,5 +221,6 @@ RequestQueue requestQueue = MySingleton.getInstance(null).getRequestQueue();
                 startActivity(profileIntent);
             }
         });
+
     }
 }
