@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +17,9 @@ import com.mousebird.maply.AttrDictionary;
 import com.mousebird.maply.ComponentObject;
 import com.mousebird.maply.GlobeController;
 import com.mousebird.maply.GlobeMapFragment;
-import com.mousebird.maply.MapController;
 import com.mousebird.maply.MaplyBaseController;
 import com.mousebird.maply.MarkerInfo;
 import com.mousebird.maply.Point2d;
-import com.mousebird.maply.Point3d;
 import com.mousebird.maply.QuadImageTileLayer;
 import com.mousebird.maply.RemoteTileInfo;
 import com.mousebird.maply.RemoteTileSource;
@@ -32,23 +29,16 @@ import com.mousebird.maply.SphericalMercatorCoordSystem;
 import com.mousebird.maply.VectorInfo;
 import com.mousebird.maply.VectorObject;
 
-import org.json.JSONObject;
-
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.attr.selectable;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static android.util.Log.d;
 
 
 public class HelloGlobeFragment extends GlobeMapFragment {
 
     ComponentObject selectedComponentObject;
     ComponentObject selectedMarkerComponent;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle inState) {
@@ -105,6 +95,20 @@ public class HelloGlobeFragment extends GlobeMapFragment {
         public String city;
         //public String subject;
     }
+
+    public static void updateMap()
+    {
+        //will include code from insertMarkers
+    }
+
+//    public static int[] newMarker()
+//    {
+//        //int[] coordinates = cities.get();
+//        //String city = ;
+//        markerCoordinates.add(coordinates);
+//        markerCoordinates.remove(0);
+//        Log.v("city coordinates", coordinates[0] + coordinates[1] + "");
+//  }
 
     private void insertMarkers() {
 

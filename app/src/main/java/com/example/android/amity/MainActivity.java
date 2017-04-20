@@ -3,8 +3,13 @@ package com.example.android.amity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import java.io.IOException;
+
+import static com.example.android.amity.Cities.createHashMap;
 
 //import static com.example.android.amity.R.id.setup;
 
@@ -169,6 +174,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Create a new intent to open the {@link NumbersActivity}
+                try
+                {
+                    createHashMap();
+                }
+
+                catch (IOException e)
+                {
+                    Log.v("fileIO", "setting up the hashmap failed");
+                }
+
                 Intent createPostIntent = new Intent(MainActivity.this, CreatePostActivity.class);
 
                 // Start the new activity

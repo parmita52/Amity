@@ -119,6 +119,7 @@ public class CreatePostActivity extends AppCompatActivity {
 // Add the request to the RequestQueue.
                 requestQueue.add(stringRequest);
 
+
                 Intent serverIntent = new Intent(CreatePostActivity.this, YourPostsActivity.class);
 
                 // Start the new activity
@@ -219,5 +220,6 @@ public class CreatePostActivity extends AppCompatActivity {
                 startActivity(profileIntent);
             }
         });
+
     }
 }

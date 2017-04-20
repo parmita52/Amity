@@ -1,16 +1,15 @@
 package com.example.android.amity;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
+import static com.example.android.amity.HelloGlobeFragment.updateMap;
 
 public class MapActivity extends AppCompatActivity {
     FloatingActionButton fab_expand, fab_add, fab_home, fab_profile;
@@ -22,6 +21,7 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        updateMap();
         //System.out.println("just got here");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

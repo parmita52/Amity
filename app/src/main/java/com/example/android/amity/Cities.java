@@ -11,8 +11,8 @@ import java.io.*;
 
 public class Cities {
 
-    HashMap<String, int[]> cities;
-    public void createHashMap() throws IOException
+    public static HashMap<String, int[]> cities;
+    public static void createHashMap() throws IOException
     {
         cities = new HashMap<String, int[]>();
         Scanner scan = new Scanner (new File("cities.txt"));
