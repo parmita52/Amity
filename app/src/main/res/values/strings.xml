@@ -138,192 +138,83 @@
         <item>Belgium</item>
         <item>Benin</item>
         <item>Burkina Faso</item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>Bangladesh</item>
+        <item>Bulgaria</item>
+        <item>The Bahamas</item>
+        <item>Bosnia and Herzegovina</item>
+        <item>Belarus</item>
+        <item>Belize</item>
+        <item>Bermuda</item>
+        <item>Bolivia</item>
+        <item>Brazil</item>
+        <item>Brunei</item>
+        <item>Bhutan</item>
+        <item>Botswana</item>
+        <item>Central African Republic</item>
+        <item>Canada</item>
+        <item>Switzerland</item>
+        <item>Chile</item>
+        <item>China</item>
+        <item>Ivory Coast</item>
+        <item>Cameroon</item>
+        <item>Democratic Republic of the Congo</item>
+        <item>Republic of the Congo</item>
+        <item>Colombia</item>
+        <item>Costa Rica</item>
+        <item>Cuba</item>
+        <item>Northern Cyprus</item>
+        <item>Cyprus</item>
+        <item>Czech Republic</item>
+        <item>Germany</item>
+        <item>Djibouti</item>
+        <item>Denmark</item>
+        <item>Dominican Republic</item>
+        <item>Algeria</item>
+        <item>Ecuador</item>
+        <item>Egypt</item>
+        <item>Eritrea</item>
+        <item>Spain</item>
+        <item>Estonia</item>
+        <item>Ethiopia</item>
+        <item>Finland</item>
+        <item>Fiji</item>
+        <item>Falkland Islands</item>
+        <item>France</item>
+        <item>Gabon</item>
+        <item>United Kingdom</item>
+        <item>Georgia</item>
+        <item>Ghana</item>
+        <item>Guinea</item>
+        <item>Gambia</item>
+        <item>Guinea Bissau</item>
+        <item>Equatorial Guinea</item>
+        <item>Greece</item>
+        <item>Greenland</item>
+        <item>Guatemala</item>
+        <item>French Guiana</item>
+        <item>Guyana</item>
+        <item>Honduras</item>
+        <item>Croatia</item>
+        <item>Haiti</item>
+        <item>Hungary</item>
+        <item>Indonesia</item>
+        <item>India</item>
+        <item>Ireland</item>
+        <item>Iran</item>
+        <item>Iraq</item>
+        <item>Iceland</item>
+        <item>Israel</item>
+        <item>Italy</item>
+        <item>Jamaica</item>
+        <item>Jordan</item>
+        <item>Japan</item>
+        <item>Kazakhstan</item>
+        <item>Kenya</item>
+        <item>Kyrgyzstan</item>
+        <item>Cambodia</item>
+        <item>South Korea</item>
+        <item>Kosovo</item>
+        <item>Kuwait</item>
         <item>Laos</item>
         <item>Lebanon</item>
         <item>Liberia</item>
@@ -335,6 +226,7 @@
         <item>Latvia</item>
         <item>Morocco</item>
         <item>Moldova</item>
+        <item>Madagascar</item>
         <item>Mexico</item>
         <item>Macedonia</item>
         <item>Mali</item>
@@ -392,6 +284,7 @@
         <item>Thailand</item>
         <item>Tajikistan</item>
         <item>Turkmenistan</item>
+        <item>East Timor</item>
         <item>Trinidad and Tobago</item>
         <item>Tunisia</item>
         <item>Turkey</item>
