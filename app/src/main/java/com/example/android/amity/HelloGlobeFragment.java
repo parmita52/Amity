@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -211,7 +212,13 @@ public class HelloGlobeFragment extends GlobeMapFragment {
                 drawVectorObjectAsSelected(vectorObject);
                 MediaPlayer mp = MediaPlayer.create(getActivity(), R.raw.button);
                 mp.start();
+
+
+
                 Intent postIntent = new Intent(getActivity(), TopPostsActivity.class);
+                Log.v("country", adminName);
+                postIntent.putExtra("country",adminName);
+                postIntent.addFlags( Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(postIntent);
             }
             // Screen Marker
@@ -223,7 +230,6 @@ public class HelloGlobeFragment extends GlobeMapFragment {
                 drawScreenMarkerAsSelected(screenMarker);
                 MediaPlayer mp = MediaPlayer.create(getActivity(), R.raw.button);
                 mp.start();
-
 
 
 

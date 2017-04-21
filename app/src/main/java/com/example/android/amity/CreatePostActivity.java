@@ -36,6 +36,7 @@ public class CreatePostActivity extends AppCompatActivity {
     String content = "";
     String title = "";
     String country = "";
+    String city = "";
 
     Spinner spinner;
     ArrayAdapter<CharSequence> adapter;
@@ -58,7 +59,7 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 country = parent.getItemAtPosition(position).toString();
-             //   Toast.makeText(CreatePostActivity.this, country, Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(CreatePostActivity.this, country, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -80,8 +81,11 @@ public class CreatePostActivity extends AppCompatActivity {
                 EditText t = (EditText) findViewById(R.id.edit_create_post_title);
                 title = t.getText().toString();
 
-RequestQueue requestQueue = MySingleton.getInstance(null).getRequestQueue();
-            //    RequestQueue requestQueue = Volley.newRequestQueue(CreatePostActivity.this);
+                EditText ci = (EditText) findViewById(R.id.edit_create_post_city);
+                city = ci.getText().toString();
+
+                RequestQueue requestQueue = MySingleton.getInstance(null).getRequestQueue();
+                //    RequestQueue requestQueue = Volley.newRequestQueue(CreatePostActivity.this);
                 //  requestQueue.start();
                 String url = "http://amitty.com/create_post.php";
 //
@@ -96,7 +100,7 @@ RequestQueue requestQueue = MySingleton.getInstance(null).getRequestQueue();
                                 if (response.equals("Error while insertion...")) {
                                     Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
-                               // Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_LONG).show();
+                                // Toast.makeText(CreatePostActivity.this, response, Toast.LENGTH_LONG).show();
 
                             }
                         }, new com.android.volley.Response.ErrorListener() {
@@ -113,6 +117,7 @@ RequestQueue requestQueue = MySingleton.getInstance(null).getRequestQueue();
                         params.put("title", title);
                         params.put("content", content);
                         params.put("country", country);
+                        params.put("city", city);
                         return params;
 
                     }

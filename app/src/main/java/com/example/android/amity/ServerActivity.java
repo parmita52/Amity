@@ -95,6 +95,8 @@ public class ServerActivity extends AppCompatActivity {
                                         s += jsonObject.getString("title");
                                         s += jsonObject.getString("content");
                                         s += jsonObject.getString("date");
+                                        s += jsonObject.get("country");
+                                        s += jsonObject.get("city");
 
                                     }
                                     mTextView.setText(s);

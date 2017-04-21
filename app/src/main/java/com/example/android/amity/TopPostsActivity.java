@@ -10,9 +10,24 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import static com.example.android.amity.LoginActivity.userGmailID;
+import static com.example.android.amity.LoginActivity.userName;
 import static com.example.android.amity.R.id.posts;
 
 public class TopPostsActivity extends AppCompatActivity {
@@ -21,6 +36,9 @@ public class TopPostsActivity extends AppCompatActivity {
     boolean isOpen = false;
 
     public static ArrayList<Post> topPosts = new ArrayList<Post>();
+    private String country = "";
+
+    public static PostAdapter postAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +48,11 @@ public class TopPostsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        country = getIntent().getExtras().get("country").toString();
+ //       Toast.makeText(TopPostsActivity.this, "set country to: " + country, Toast.LENGTH_SHORT).show();
 
-        PostAdapter postAdapter = new PostAdapter (this, topPosts);
+        updateTopPosts();
 
-        ListView listView = (ListView) findViewById(R.id.template_list);
-
-        listView.setAdapter(postAdapter);
 
 
 
@@ -63,7 +80,7 @@ public class TopPostsActivity extends AppCompatActivity {
         fab_expand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isOpen){
+                if (isOpen) {
                     //close animation for 3 buttons
                     fab_add.startAnimation(FabClose);
                     fab_home.startAnimation(FabClose);
@@ -76,8 +93,7 @@ public class TopPostsActivity extends AppCompatActivity {
                     fab_profile.setClickable(false);
                     isOpen = false;
 
-                }
-                else{
+                } else {
                     //open animation for 3 buttons
                     fab_add.startAnimation(FabOpen);
                     fab_home.startAnimation(FabOpen);
@@ -133,4 +149,84 @@ public class TopPostsActivity extends AppCompatActivity {
         });
     }
 
+
+    private void updateTopPosts() {
+        topPosts.clear();
+
+
+        String url = "http://amitty.com/top_posts.php";
+        RequestQueue requestQueue = MySingleton.getInstance(null).getRequestQueue();
+
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new com.android.volley.Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            String s = "";
+                            JSONArray jsonArray = new JSONArray(response);
+                            // Toast.makeText(ServerActivity.this, jsonArray.toString(), Toast.LENGTH_LONG).show();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String name = jsonObject.getString("name");
+                                String title = jsonObject.getString("title");
+                                String content = jsonObject.getString("content");
+                                String date = jsonObject.getString("date");
+                                String country = jsonObject.getString("country");
+                                String city = jsonObject.getString("city");
+                                topPosts.add(0, new Post(name, title, content, date, country, city));
+                         //   Toast.makeText(TopPostsActivity.this, topPosts.toString(), Toast.LENGTH_LONG).show();
+                                updateListView();
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(TopPostsActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("country", country);
+
+                return params;
+
+            }
+        };
+// Add the request to the RequestQueue.
+        requestQueue.add(stringRequest);
+
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+         //  Toast.makeText(TopPostsActivity.this, "on new intent called", Toast.LENGTH_SHORT).show();
+        if (intent.getExtras() == null) {
+
+        } else if (intent.getExtras().get("country").equals("") || !intent.getExtras().get("country").equals(country)) {
+
+            country = intent.getExtras().get("country").toString();
+            updateTopPosts();
+        }
+
+
+    }
+
+    public void updateListView(){
+        postAdapter = new PostAdapter(this, topPosts);
+
+        ListView listView = (ListView) findViewById(R.id.template_list);
+
+        listView.setAdapter(postAdapter);
+    }
 }
