@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -52,7 +53,6 @@ public class TopPostsActivity extends AppCompatActivity {
  //       Toast.makeText(TopPostsActivity.this, "set country to: " + country, Toast.LENGTH_SHORT).show();
 
         updateTopPosts();
-
 
 
 
@@ -176,9 +176,9 @@ public class TopPostsActivity extends AppCompatActivity {
                                 String city = jsonObject.getString("city");
                                 topPosts.add(0, new Post(name, title, content, date, country, city));
                          //   Toast.makeText(TopPostsActivity.this, topPosts.toString(), Toast.LENGTH_LONG).show();
-                                updateListView();
-                            }
 
+                            }
+                            updateListView();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -205,6 +205,7 @@ public class TopPostsActivity extends AppCompatActivity {
 // Add the request to the RequestQueue.
         requestQueue.add(stringRequest);
 
+
     }
 
     @Override
@@ -216,7 +217,9 @@ public class TopPostsActivity extends AppCompatActivity {
         } else if (intent.getExtras().get("country").equals("") || !intent.getExtras().get("country").equals(country)) {
 
             country = intent.getExtras().get("country").toString();
+            Log.v("new country: " , country);
             updateTopPosts();
+            updateListView();
         }
 
 
