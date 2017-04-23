@@ -21,6 +21,24 @@
             android:id="@+id/author"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/postInfo"
+            android:id="@+id/city"/>
+
+        <TextView
+            style="@style/postInfo"
+            android:id="@+id/country"/>
+
+        <TextView
+            style="@style/postInfo"
+            android:id="@+id/date"/>
+    </LinearLayout>
+
     <TextView
         style="@style/postContent"
         android:id="@+id/content"/>
