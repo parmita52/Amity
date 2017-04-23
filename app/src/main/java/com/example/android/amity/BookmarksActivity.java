@@ -28,7 +28,9 @@ public class BookmarksActivity extends AppCompatActivity {
 
 
         ArrayList<Post> posts = new ArrayList<Post>();
-
+        posts.add(new Post("Jean-Paul Durand", "Quebec Bonhomme Festival", "Just had a great time at the Bonhomme Festival in Quebec! C’était génial! My kids loved watching the canoe race, the snow sculpture contest, and the parade! We even went ice skating for the first time. Personally, I loved looking at all the different intricate ice sculptures. In the night, we met the Bonhomme and my kids were so excited to take a picture with him. Sadly, we weren’t able to get inside of Château Frontenac for the ball. Maybe next year!", "2017-02-18", "Canada", "Quebec"));
+        posts.add(new Post("Anita Overney", "Swiss Food", "This weekend my grandchildren from America visited me at Basel. It was the first time visiting their father’s home country, and I wanted to enrich them in Swiss Food. I asked my granddaughter, a 15 year old, what Swiss food she heard of, and she only mentioned Cheese Fondue. I was completely shocked!! Even though she was a Swiss Citizen, she had no idea about Swiss culture. Cheese Fondue is a dish targeted for tourists, not necessarily locals. It was first introduced after the World War, because there was an excess of cheese in the Swiss cheese industry. In order to get rid of the excess, cheese fondue, traditionally a mountain dish, was introduced throughout Switzerland. I found it fascinating that a once unknown dish is suddenly representing Swiss cuisine. So I decided to educate my family and lead them on a Swiss food immersion trip. We went to Zurich to eat Rosti, a simple potato dish, and to Luzern to eat Raclette, melted cheese on potatoes. In the end, we all gained at least 5 pounds, but more importantly, my grandchildren gained knowledge about their Swiss culture, and that matters.", "2017-04-16", "Switzerland", "Basel"));
+        
         PostAdapter postAdapter = new PostAdapter (this, posts);
 
         ListView listView = (ListView) findViewById(R.id.template_list);
