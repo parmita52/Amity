@@ -208,7 +208,7 @@ public class HelloGlobeFragment extends GlobeMapFragment {
                // attributes.setString("name","India");
                 //d("userDidSelect", "this is it 3"+ attributes.toString()); //testing
                 String adminName = attributes.getString("name");
-                msg += adminName;
+                msg = adminName.toString();
                 drawVectorObjectAsSelected(vectorObject);
                 MediaPlayer mp = MediaPlayer.create(getActivity(), R.raw.button);
                 mp.start();
