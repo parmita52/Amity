@@ -36,8 +36,17 @@ public class PostAdapter extends ArrayAdapter<Post> {
         TextView author = (TextView) listItemView.findViewById(R.id.author);
         author.setText(currentPost.getAuthor());
 
+        TextView city = (TextView) listItemView.findViewById(R.id.city);
+        city.setText(currentPost.getCity());
+
+        TextView country = (TextView) listItemView.findViewById(R.id.country);
+        country.setText(currentPost.getCountry());
+
+        TextView date = (TextView) listItemView.findViewById(R.id.date);
+        date.setText(currentPost.getDate());
+
         TextView content = (TextView) listItemView.findViewById(R.id.content);
-       content.setText(currentPost.getContent());
+        content.setText(currentPost.getContent());
 
         return listItemView;
     }
