@@ -36,10 +36,10 @@ public class TopPostsActivity extends AppCompatActivity {
     Animation FabOpen, FabClose, FabRClockwise, FabRCounterclockwise;
     boolean isOpen = false;
 
-    public static ArrayList<Post> topPosts = new ArrayList<Post>();
+    private static ArrayList<Post> topPosts = new ArrayList<Post>();
     private String country = "";
 
-    public static PostAdapter postAdapter;
+    private static PostAdapter postAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +50,9 @@ public class TopPostsActivity extends AppCompatActivity {
 
 
         country = getIntent().getExtras().get("country").toString();
- //       Toast.makeText(TopPostsActivity.this, "set country to: " + country, Toast.LENGTH_SHORT).show();
+        //       Toast.makeText(TopPostsActivity.this, "set country to: " + country, Toast.LENGTH_SHORT).show();
 
         updateTopPosts();
-
 
 
         //          Start of FAB**************************************
@@ -151,6 +150,7 @@ public class TopPostsActivity extends AppCompatActivity {
 
 
     private void updateTopPosts() {
+
         topPosts.clear();
 
 
@@ -163,9 +163,11 @@ public class TopPostsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            String s = "";
+                            topPosts.clear();
+                 //           String s = "";
                             JSONArray jsonArray = new JSONArray(response);
-                            // Toast.makeText(ServerActivity.this, jsonArray.toString(), Toast.LENGTH_LONG).show();
+               //             s += jsonArray.length();
+                   //         Toast.makeText(TopPostsActivity.this, s, Toast.LENGTH_SHORT).show();
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 String name = jsonObject.getString("name");
@@ -175,7 +177,7 @@ public class TopPostsActivity extends AppCompatActivity {
                                 String country = jsonObject.getString("country");
                                 String city = jsonObject.getString("city");
                                 topPosts.add(0, new Post(name, title, content, date, country, city));
-                         //   Toast.makeText(TopPostsActivity.this, topPosts.toString(), Toast.LENGTH_LONG).show();
+                     //           Toast.makeText(TopPostsActivity.this, topPosts.toString(), Toast.LENGTH_LONG).show();
 
                             }
                             updateListView();
@@ -211,21 +213,20 @@ public class TopPostsActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-         //  Toast.makeText(TopPostsActivity.this, "on new intent called", Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(TopPostsActivity.this, "on new intent called", Toast.LENGTH_SHORT).show();
         if (intent.getExtras() == null) {
-
-        } else if (intent.getExtras().get("country").equals("") || !intent.getExtras().get("country").equals(country)) {
-
+        }// } else if (intent.getExtras().get("country").equals("") || !intent.getExtras().get("country").equals(country)) {
+        else {
+//            Toast.makeText(TopPostsActivity.this, topPosts.toString(), Toast.LENGTH_SHORT).show();
             country = intent.getExtras().get("country").toString();
-            Log.v("new country: " , country);
+            //      Log.v("new country: ", country);
             updateTopPosts();
-            updateListView();
         }
 
 
     }
 
-    public void updateListView(){
+    public void updateListView() {
         postAdapter = new PostAdapter(this, topPosts);
 
         ListView listView = (ListView) findViewById(R.id.template_list);
